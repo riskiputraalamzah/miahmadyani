@@ -10,6 +10,7 @@
           hide-delimiters
         >
           <v-carousel-item
+            reverse-transition="scale-transition"
             transition="scale-transition"
             v-for="(slide, i) in sliders"
             :key="i"
@@ -36,7 +37,7 @@
     <section class="my-section py-10">
       <v-container>
         <div
-          class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
+          class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
         >
           <span class="font-poppins rule-headline">
             Sambutan Kepala Sekolah
@@ -73,11 +74,11 @@
         </v-row>
       </v-container>
     </section>
-    <section class="my-section py-10">
+    <section class="my-section py-10 grey lighten-5">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
               Informasi Terbaru
@@ -86,7 +87,7 @@
           <v-hover v-slot="{ hover }">
             <router-link
               :class="[
-                'font-poppins text-sm-h6 text-headline red--text',
+                'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
                 hover ? 'text-decoration-underline' : 'text-decoration-none',
               ]"
               to="/informasi"
@@ -104,8 +105,10 @@
           >
             <v-card
               @click="toggle"
-              class="ma-2 "
+              class="ma-3 font-poppins"
               light
+              color="transparent"
+              elevation="0"
               :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
             >
               <v-img
@@ -136,7 +139,7 @@
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
               Artikel Terbaru
@@ -145,7 +148,7 @@
           <v-hover v-slot="{ hover }">
             <router-link
               :class="[
-                'font-poppins text-sm-h6 text-headline red--text',
+                'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
                 hover ? 'text-decoration-underline' : 'text-decoration-none',
               ]"
               to="/informasi"
@@ -163,8 +166,9 @@
           >
             <v-card
               @click="toggle"
-              class="ma-2 "
+              class="ma-3 font-poppins"
               light
+              elevation="0"
               :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
             >
               <v-img
@@ -191,11 +195,11 @@
         </v-slide-group>
       </v-container>
     </section>
-    <section class="my-section py-10">
+    <section class="my-section py-10 grey lighten-5">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
               Berita Terbaru
@@ -204,7 +208,7 @@
           <v-hover v-slot="{ hover }">
             <router-link
               :class="[
-                'font-poppins text-sm-h6 text-headline red--text',
+                'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
                 hover ? 'text-decoration-underline' : 'text-decoration-none',
               ]"
               to="/informasi"
@@ -222,7 +226,9 @@
           >
             <v-card
               @click="toggle"
-              class="ma-2 "
+              class="ma-3 font-poppins"
+              color="transparent"
+              elevation="0"
               light
               :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
             >

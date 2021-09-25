@@ -33,12 +33,14 @@
         <div
           class="d-flex flex-wrap justify-md-space-between justify-center flex-md-row flex-column align-center"
         >
-          <div class="logo-navbar d-flex align-center flex-sm-row flex-column">
+          <div
+            class="no-select logo-navbar d-flex align-center flex-sm-row flex-column"
+          >
             <div
               style="width:calc(2vw + 70px);height:calc(2vw + 70px)"
               class="mr-1"
             >
-              <v-img src="/logo-mi.png" contain></v-img>
+              <v-img src="/logo-mi.png" lazy-src="/logo-mi.png"></v-img>
             </div>
             <div
               class="text-logo d-flex flex-column text-center justify-center"
@@ -68,9 +70,12 @@
             <div v-show="$vuetify.breakpoint.width > 599 || showMenu">
               <v-form class="mt-md-8 mt-2" @submit.prevent>
                 <v-text-field
+                  v-model="keyword"
                   color="success"
                   rounded
                   label="Search"
+                  append-icon="mdi-magnify"
+                  @click:append="search"
                   outlined
                   clearable
                 ></v-text-field>
@@ -135,6 +140,7 @@ import Dropdown from "./Dropdown.vue";
 export default {
   data() {
     return {
+      keyword: null,
       showMenu: false,
       activeParentDropdown: 3,
       sosmeds: [
@@ -203,11 +209,12 @@ export default {
         this.showMenu = !this.showMenu;
       }
     },
+    search() {
+      if (this.keyword) {
+        alert(this.keyword);
+        this.keyword = null;
+      }
+    },
   },
 };
 </script>
-<style scoped>
-.group-menus {
-  width: 100%;
-}
-</style>
