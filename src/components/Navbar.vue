@@ -16,7 +16,7 @@
             <span>085648092229</span>
           </div>
         </div>
-        <div class="right mx-md-0 mx-auto  my-1">
+        <div class="right   my-1">
           <v-tooltip bottom v-for="(sosmed, i) in sosmeds" :key="i">
             <template v-slot:activator="{ on, attrs }">
               <v-btn dark icon v-bind="attrs" v-on="on">
@@ -29,7 +29,7 @@
       </v-container>
     </div>
     <div class="navbar">
-      <v-container class="pb-0" fluid>
+      <v-container class="pb-0">
         <div
           class="d-flex flex-wrap justify-md-space-between justify-center flex-md-row flex-column align-center"
         >
@@ -67,8 +67,11 @@
           </v-btn>
 
           <v-expand-transition>
-            <div v-show="$vuetify.breakpoint.width > 599 || showMenu">
-              <v-form class="mt-md-8 mt-2" @submit.prevent>
+            <div
+              class="mx-auto"
+              v-show="$vuetify.breakpoint.width > 599 || showMenu"
+            >
+              <v-form class="mt-md-8 mt-sm-6 mt-2" @submit.prevent>
                 <v-text-field
                   v-model="keyword"
                   color="success"
@@ -83,8 +86,11 @@
           ></v-expand-transition>
 
           <v-expand-transition>
-            <div v-show="$vuetify.breakpoint.width > 599 || showMenu">
-              <div class="mb-4 mb-md-0">
+            <div
+              class="mx-auto mt-sm-3 mt-0"
+              v-show="$vuetify.breakpoint.width > 599 || showMenu"
+            >
+              <div class="mb-4 mb-md-0 ">
                 <v-btn color="success" class="mx-2" large>login</v-btn>
                 <v-btn color="success" class="mx-2" outlined large
                   >daftar</v-btn
@@ -97,37 +103,42 @@
 
       <v-expand-transition>
         <div v-show="$vuetify.breakpoint.width > 599 || showMenu">
-          <v-list class="pa-0 mt-5 list-menu" width="100%">
-            <v-list-item-group
-              v-model="activeParentDropdown"
-              class="d-sm-flex d-block"
-              color="success"
-            >
+          <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
+            <v-list-item-group class="d-sm-flex d-block" color="transparent">
+              <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+
               <v-list-item
                 v-for="(menu, i) in menus"
                 :key="i"
                 :to="menu.path"
                 exact
-                @click="closeMenu('child' in menu)"
-                :class="['px-2 pb-sm-0', i != menus.length - 1 ? 'pb-3' : '']"
+                @click="activeMenu = 'child' in menu ? i : null"
+                :class="[
+                  'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
+                  activeMenu === i ? 'v-item--active v-list-item--active' : '',
+                ]"
               >
                 <v-list-item-content class="py-0">
                   <Dropdown
                     :text="menu.text"
                     :parentKey="i"
-                    @activeParent="activeParentDropdown = $event"
-                    @closeSectionMenu="closeMenu(false)"
+                    :countMenu="menus.length - 1"
+                    @activeParentMenu="activeMenu = $event"
                     :menus="menu.child"
                     v-if="'child' in menu"
                   />
                   <v-list-item-title
                     v-else
                     height="100%"
-                    class="text-center d-flex justify-center align-center pt-3"
+                    :class="[
+                      'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0',
+                      i != menus.length - 1 ? 'pb-3' : 'pb-0',
+                    ]"
                     v-text="menu.text"
                   ></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
+              <v-list-item disabled class="d-sm-block d-none"></v-list-item>
             </v-list-item-group>
           </v-list>
         </div>
@@ -142,7 +153,7 @@ export default {
     return {
       keyword: null,
       showMenu: false,
-      activeParentDropdown: 3,
+      activeMenu: null,
       sosmeds: [
         {
           icon: "mdi-facebook",
@@ -166,6 +177,7 @@ export default {
           path: "/",
           text: "HOME",
         },
+
         {
           text: "PROFIL",
           child: [
@@ -174,12 +186,12 @@ export default {
               text: "Visi Misi",
             },
             {
-              path: "/child-1",
-              text: "Child 1",
+              path: "/infomasi-sekolah",
+              text: "Informasi Sekolah",
             },
             {
-              path: "/child-2",
-              text: "Child 2",
+              path: "/menu-lainnya-2",
+              text: "Menu Lainnya 2",
             },
           ],
         },
@@ -191,6 +203,7 @@ export default {
           path: "/galeri",
           text: "GALERI",
         },
+
         {
           path: "/kontak",
           text: "KONTAK",
@@ -203,12 +216,12 @@ export default {
   },
 
   methods: {
-    closeMenu(boolean) {
-      const width = this.$vuetify.breakpoint.width;
-      if (!boolean && width < 599) {
-        this.showMenu = !this.showMenu;
-      }
-    },
+    // closeMenu(boolean) {
+    //   const width = this.$vuetify.breakpoint.width;
+    //   if (!boolean && width < 599) {
+    //     this.showMenu = !this.showMenu;
+    //   }
+    // },
     search() {
       if (this.keyword) {
         alert(this.keyword);

@@ -3,18 +3,22 @@
     <Navbar />
 
     <v-main>
-      <v-scale-transition>
+      <v-fade-transition>
         <router-view></router-view>
-      </v-scale-transition>
+      </v-fade-transition>
     </v-main>
     <div class="my-footer">
       <v-container class="py-0">
         <div class="data-footer py-10">
-          <v-row justify="center" align="center">
-            <v-col cols="12" md="4" class="font-weight-bold">
+          <v-row
+            justify="center"
+            class="flex-md-row-reverse flex-row"
+            align="center"
+          >
+            <v-col cols="12" ord md="4" class="font-weight-bold">
               <div class="text-center my-2">ISLAMIC SUPERIOR SCHOOL</div>
               <div
-                class="d-flex my-2 align-center justify-center flex-sm-column flex-row"
+                class="d-flex my-2 align-center text-center justify-center flex-sm-column flex-row"
               >
                 <div
                   style="width:calc(2vw + 70px);height:calc(2vw + 70px)"
@@ -31,9 +35,33 @@
               </div>
               <div class="text-center my-2">TERAKREDITASI <q>A-UNGGUL</q></div>
             </v-col>
-            <v-col cols="12" md="4" sm="6">
+            <v-col cols="12" order-md="last" md="4" sm="6">
               <div class="text-md-h6 pl-3 text-heading font-poppins">
                 Tentang Kami
+              </div>
+              <v-list color="transparent " flat dark>
+                <v-list-item-group>
+                  <v-list-item>
+                    <v-subheader class="pl-0">Visi dan Misi</v-subheader>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-subheader class="pl-0">Informasi Sekolah</v-subheader>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-subheader class="pl-0">Artikel</v-subheader>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-subheader class="pl-0">Berita</v-subheader>
+                  </v-list-item>
+                  <v-list-item>
+                    <v-subheader class="pl-0">Kontak</v-subheader>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-col>
+            <!-- <v-col cols="12" md="4" sm="6">
+              <div class="text-md-h6 pl-3 text-heading font-poppins">
+                Other
               </div>
               <v-list color="transparent " flat dark>
                 <v-list-item-group>
@@ -54,22 +82,10 @@
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
-            </v-col>
-            <v-col cols="12" md="4" sm="6" align-self="start">
-              <div class="text-md-h6 pl-3 text-heading font-poppins">
-                Tentang Kami
-              </div>
-              <v-list flat color="transparent" dark>
-                <v-list-item-group>
-                  <v-list-item>
-                    <v-subheader class="pl-0">Visi dan Misi</v-subheader>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
-            </v-col>
+            </v-col> -->
           </v-row>
         </div>
-        <div class="copyright text-center py-2">
+        <div class="copyright text-center py-3 font-weight-medium">
           &copy; 2021 &mdash; MI Ahmad Yani &mdash; All Rights Reserved
         </div>
       </v-container>

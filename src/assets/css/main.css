@@ -66,18 +66,64 @@ html body .v-application .font-logo {
   color: var(--green);
   text-shadow: 2px -2px var(--semiYellow);
 }
-
-.parent-navbar .v-list-item:not(.list-dropdown) {
+.parent-navbar .v-list-item:not(.list-dropdown),
+.parent-navbar .v-list-item:not(.list-dropdown)::before {
   transition: background 0.2s linear;
   background-color: white !important;
 }
-.parent-navbar .v-list-item:not(.list-dropdown).v-list-item--active,
-.parent-navbar .v-list-item:not(.list-dropdown):hover,
-.parent-navbar .v-list-item:not(.list-dropdown)::before {
+.parent-navbar
+  .v-list-item.parent-menu-dropdown:not(.v-item--active)
+  .v-list-group
+  .v-list-group__header {
+  color: black !important;
+}
+.parent-navbar .v-list-item:not(.list-dropdown).v-item--active,
+.parent-navbar .v-list-item:not(.list-dropdown).v-item--active::before,
+.parent-navbar
+  .v-list-item.parent-menu-dropdown
+  .v-list-group
+  .v-list-group__header,
+.parent-navbar
+  .v-list-item.parent-menu-dropdown
+  .v-list-group
+  .v-list-group__header:hover,
+.parent-navbar
+  .v-list-item.parent-menu-dropdown
+  .v-list-group
+  .v-list-group__header::before {
+  background-color: transparent !important;
+  color: white !important;
+}
+.parent-navbar
+  .v-list-item.parent-menu-dropdown:not(.v-item--active)
+  .v-list-group
+  .v-list-group__header {
+  color: black !important;
+}
+.parent-navbar
+  .v-list-item.parent-menu-dropdown
+  .v-list-group
+  .v-list-group__header {
+  padding: 0;
+}
+
+/* .parent-navbar .v-list-item:not(.list-dropdown) {
+  transition: background 0.2s linear;
+  background-color: white !important;
+}
+.parent-navbar .v-list-item:not(.list-dropdown).v-list-item--active, */
+/* .parent-navbar .v-list-item:not(.list-dropdown):hover, */
+/* .parent-navbar .v-list-item:not(.list-dropdown)::before {
   color: white !important;
   opacity: 1;
   background-color: transparent !important;
 }
+
+.v-list-group .v-list-group__header.v-list-item {
+  color: white !important;
+  background-color: transparent !important;
+  padding: 0;
+} */
 
 .parent-list-menu {
   transition: all 0.5s ease;
@@ -120,8 +166,9 @@ html body .v-application .font-logo {
 
 .my-footer {
   color: white;
-  background-image: linear-gradient(to top, var(--green), var(--semiGreen));
+  background-image: var(--myGradient);
 }
+
 /* .my-footer .data-footer {
   background-color: var(--semiGreen);
 }
@@ -138,6 +185,31 @@ section:first-child {
 
 .v-breadcrumbs__item:not(.v-breadcrumbs__item--disabled) {
   color: black;
+}
+
+.v-slide-group {
+  position: relative;
+}
+.v-slide-group .v-slide-group__next,
+.v-slide-group .v-slide-group__prev {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+}
+.v-slide-group .v-slide-group__next i,
+.v-slide-group .v-slide-group__prev i {
+  background-color: white;
+  box-shadow: 2px 2px 2.5px rgba(0, 0, 0, 0.2),
+    -2px 2px 2.5px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+.v-slide-group .v-slide-group__next {
+  right: 0;
+}
+.v-slide-group .v-slide-group__prev {
+  left: 0;
 }
 @keyframes scaleImage {
   0% {
@@ -161,16 +233,29 @@ section:first-child {
   }
 }
 @media (max-width: 599px) {
-  /* .v-list-item:not(.list-dropdown).v-list-item--active,
-  .v-list-item:not(.list-dropdown):hover,
-  .v-list-item:not(.list-dropdown)::before {
-    color: var(--green) !important;
-    background-color: white !important;
-  } */
   .navbar .container .parent-menu.list-menu {
     left: 50%;
   }
-
+  .parent-navbar
+    .v-list-item.parent-menu-dropdown:hover
+    .v-list-item.list-dropdown {
+    color: black !important;
+  }
+  .parent-navbar
+    .v-list-item.parent-menu-dropdown.v-item--active:hover
+    .v-list-item.list-dropdown {
+    color: white !important;
+  }
+  /* .parent-navbar .v-list-item.parent-menu-dropdown:hover,
+  html
+    body
+    .v-application
+    .parent-navbar
+    .v-list-item.parent-menu-dropdown:hover
+    .v-list-group__header {
+    background-color: transparent !important;
+    color: white !important;
+  } */
   .navbar .parent-menu {
     margin: 0 auto;
     padding: 0;

@@ -37,7 +37,7 @@
     <section class="my-section py-10">
       <v-container>
         <div
-          class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
+          class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
         >
           <span class="font-poppins rule-headline">
             Sambutan Kepala Sekolah
@@ -74,14 +74,14 @@
         </v-row>
       </v-container>
     </section>
-    <section class="my-section py-10 grey lighten-5">
+    <section class="my-section py-10 ">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
-              Informasi Terbaru
+              Informasi Sekolah
             </span>
           </div>
           <v-hover v-slot="{ hover }">
@@ -97,40 +97,30 @@
           </v-hover>
         </div>
 
-        <v-slide-group center-active class="mt-10">
-          <v-slide-item
-            v-for="(info, i) in informasiTerbaru"
-            :key="i"
-            v-slot="{ toggle }"
-          >
-            <v-card
-              @click="toggle"
-              class="ma-3 font-poppins"
-              light
-              color="transparent"
-              elevation="0"
-              :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
-            >
-              <v-img
-                aspect-ratio="1.5"
-                :lazy-src="info.image"
-                :src="info.image"
-              ></v-img>
-              <v-card-title
-                v-text="info.title"
-                style="line-height:1.5rem"
-              ></v-card-title>
-              <!-- <v-row class="fill-height" align="center" justify="center">
-                <v-scale-transition>
-                  <v-icon
-                    v-if="active"
-                    color="white"
-                    size="48"
-                    v-text="'mdi-close-circle-outline'"
-                  ></v-icon>
-                </v-scale-transition>
-              </v-row> -->
-            </v-card>
+        <v-slide-group mobile-breakpoint="0" center-active class="mt-10">
+          <v-slide-item v-for="(info, i) in informasiTerbaru" :key="i">
+            <v-hover v-slot="{ hover }">
+              <v-card
+                :class="[
+                  'ma-3 font-poppins hover-card',
+                  hover ? 'on-hover-card' : '',
+                ]"
+                color="transparent"
+                elevation="0"
+                light
+                :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
+              >
+                <v-img
+                  aspect-ratio="1.5"
+                  :lazy-src="info.image"
+                  :src="info.image"
+                ></v-img>
+                <v-card-title
+                  v-text="info.title"
+                  style="line-height:1.5rem"
+                ></v-card-title>
+              </v-card>
+            </v-hover>
           </v-slide-item>
         </v-slide-group>
       </v-container>
@@ -139,10 +129,10 @@
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
-              Artikel Terbaru
+              Artikel
             </span>
           </div>
           <v-hover v-slot="{ hover }">
@@ -158,51 +148,42 @@
           </v-hover>
         </div>
 
-        <v-slide-group center-active class="mt-10">
-          <v-slide-item
-            v-for="(info, i) in artikelTerbaru"
-            :key="i"
-            v-slot="{ toggle }"
-          >
-            <v-card
-              @click="toggle"
-              class="ma-3 font-poppins"
-              light
-              elevation="0"
-              :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
-            >
-              <v-img
-                aspect-ratio="1.5"
-                :lazy-src="info.image"
-                :src="info.image"
-              ></v-img>
-              <v-card-title
-                v-text="info.title"
-                style="line-height:1.5rem"
-              ></v-card-title>
-              <!-- <v-row class="fill-height" align="center" justify="center">
-                <v-scale-transition>
-                  <v-icon
-                    v-if="active"
-                    color="white"
-                    size="48"
-                    v-text="'mdi-close-circle-outline'"
-                  ></v-icon>
-                </v-scale-transition>
-              </v-row> -->
-            </v-card>
+        <v-slide-group mobile-breakpoint="0" center-active class="mt-10">
+          <v-slide-item v-for="(info, i) in artikelTerbaru" :key="i">
+            <v-hover v-slot="{ hover }">
+              <v-card
+                :class="[
+                  'ma-3 font-poppins hover-card',
+                  hover ? 'on-hover-card' : '',
+                ]"
+                color="transparent"
+                elevation="0"
+                light
+                :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
+              >
+                <v-img
+                  aspect-ratio="1.5"
+                  :lazy-src="info.image"
+                  :src="info.image"
+                ></v-img>
+                <v-card-title
+                  v-text="info.title"
+                  style="line-height:1.5rem"
+                ></v-card-title>
+              </v-card>
+            </v-hover>
           </v-slide-item>
         </v-slide-group>
       </v-container>
     </section>
-    <section class="my-section py-10 grey lighten-5">
+    <section class="my-section py-10 ">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
-            class="text-md-h3  text-sm-h4 text-h6 font-weight-bold text-center"
+            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
           >
             <span class="font-poppins rule-headline">
-              Berita Terbaru
+              Berita
             </span>
           </div>
           <v-hover v-slot="{ hover }">
@@ -218,40 +199,30 @@
           </v-hover>
         </div>
 
-        <v-slide-group center-active class="mt-10">
-          <v-slide-item
-            v-for="(info, i) in beritaTerbaru"
-            :key="i"
-            v-slot="{ toggle }"
-          >
-            <v-card
-              @click="toggle"
-              class="ma-3 font-poppins"
-              color="transparent"
-              elevation="0"
-              light
-              :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
-            >
-              <v-img
-                aspect-ratio="1.5"
-                :lazy-src="info.image"
-                :src="info.image"
-              ></v-img>
-              <v-card-title
-                v-text="info.title"
-                style="line-height:1.5rem"
-              ></v-card-title>
-              <!-- <v-row class="fill-height" align="center" justify="center">
-                <v-scale-transition>
-                  <v-icon
-                    v-if="active"
-                    color="white"
-                    size="48"
-                    v-text="'mdi-close-circle-outline'"
-                  ></v-icon>
-                </v-scale-transition>
-              </v-row> -->
-            </v-card>
+        <v-slide-group mobile-breakpoint="0" center-active class="mt-10">
+          <v-slide-item v-for="(info, i) in beritaTerbaru" :key="i">
+            <v-hover v-slot="{ hover }">
+              <v-card
+                :class="[
+                  'ma-3 font-poppins hover-card',
+                  hover ? 'on-hover-card' : '',
+                ]"
+                color="transparent"
+                elevation="0"
+                light
+                :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
+              >
+                <v-img
+                  aspect-ratio="1.5"
+                  :lazy-src="info.image"
+                  :src="info.image"
+                ></v-img>
+                <v-card-title
+                  v-text="info.title"
+                  style="line-height:1.5rem"
+                ></v-card-title>
+              </v-card>
+            </v-hover>
           </v-slide-item>
         </v-slide-group>
       </v-container>
@@ -286,6 +257,7 @@ export default {
   components: {
     HeroContent,
   },
+
   created() {
     const dataInformasiTerbaru = [
       {
@@ -364,5 +336,24 @@ export default {
 <style scoped>
 .p-sticky {
   border-left: 2px solid rgb(235, 235, 235);
+}
+
+section.my-section:nth-child(odd) {
+  background-color: #fafafa;
+}
+/* .hover-card {
+  transition: 0.5s ease;
+} */
+.hover-card.on-hover-card {
+  animation: bounce 1s infinite;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 </style>

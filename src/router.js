@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Galeri from "./views/Galeri.vue";
+import VisiMisi from "./views/VisiMisi.vue";
 
 Vue.use(Router);
 export default new Router({
@@ -14,9 +16,12 @@ export default new Router({
     {
       path: "/galeri",
       name: "galeri",
-
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Galeri.vue"),
+      component: Galeri,
+    },
+    {
+      path: "/visi-misi",
+      name: "visiMisi",
+      component: VisiMisi,
     },
   ],
 });
