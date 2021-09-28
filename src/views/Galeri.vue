@@ -13,45 +13,104 @@
         >
           <span class="font-poppins rule-headline">
             Album
+            <span class="nama-area">{{
+              selectedItem == "Images" ? "Foto" : "Video"
+            }}</span>
           </span>
         </div>
-        <v-row justify="center">
-          <v-col
-            v-for="(album, i) in albums"
-            :key="i"
-            cols="6"
-            sm="4"
-            md="3"
-            class="d-flex child-flex"
+
+        <div class="d-flex justify-space-between align-center mb-5">
+          <v-btn-toggle
+            v-model="selectedItem"
+            mandatory
+            rounded
+            color="success"
           >
-            <v-img
-              :src="album.img"
-              :lazy-src="album.img"
-              aspect-ratio="16/9"
-              class="grey lighten-2 align-end white--text"
-              gradient="to top,rgba(0,0,0,0.7),transparent"
-            >
-              <v-card-title>{{ album.text }}</v-card-title>
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  ></v-progress-circular>
-                </v-row>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="selectedItem = 'Images'"
+                  value="Images"
+                >
+                  <v-icon>mdi-file-image</v-icon>
+                </v-btn>
               </template>
-            </v-img>
-          </v-col>
-        </v-row>
+              <span>Album Foto</span>
+            </v-tooltip>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  icon
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="selectedItem = 'Videos'"
+                  value="Videos"
+                >
+                  <v-icon>mdi-file-video</v-icon>
+                </v-btn>
+              </template>
+              <span>Album Video</span>
+            </v-tooltip>
+          </v-btn-toggle>
+
+          <v-btn-toggle
+            v-model="selectedView"
+            mandatory
+            rounded
+            color="success"
+          >
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  v-bind="attrs"
+                  v-on="on"
+                  icon
+                  @click="selectedView = 'grid'"
+                  value="grid"
+                >
+                  <v-icon>mdi-grid</v-icon>
+                </v-btn>
+              </template>
+              <span>View Grid</span>
+            </v-tooltip>
+
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  v-bind="attrs"
+                  v-on="on"
+                  icon
+                  @click="selectedView = 'list'"
+                  value="list"
+                >
+                  <v-icon>mdi-cards-variant</v-icon>
+                </v-btn>
+              </template>
+              <span>View Card</span>
+            </v-tooltip>
+          </v-btn-toggle>
+        </div>
+        <!-- area -->
+        <v-fade-transition>
+          <component :is="selectedItem" :layouts="selectedView"></component>
+        </v-fade-transition>
+        <!-- end areaa -->
       </section>
     </v-container>
   </div>
 </template>
 
 <script>
+import Images from "@/components/galeri/Images.vue";
+import Videos from "@/components/galeri/Videos.vue";
 export default {
   data() {
     return {
+      selectedItem: "Images",
+      selectedView: "grid",
       items: [
         {
           text: "Home",
@@ -64,30 +123,12 @@ export default {
           to: "/galeri",
         },
       ],
-      albums: [
-        {
-          img: "/images/galeri/gambar-1.jpg",
-          text: "Contoh Text",
-        },
-
-        {
-          img: "/images/galeri/gambar-2.jpg",
-          text: "Contoh Text",
-        },
-        {
-          img: "/images/galeri/gambar-3.jpg",
-          text: "Contoh Text",
-        },
-        {
-          img: "/images/galeri/gambar-4.jpg",
-          text: "Contoh Text",
-        },
-        {
-          img: "/images/galeri/gambar-5.jpg",
-          text: "Contoh Text",
-        },
-      ],
     };
+  },
+
+  components: {
+    Images,
+    Videos,
   },
 };
 </script>

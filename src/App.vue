@@ -1,5 +1,16 @@
 <template>
   <v-app>
+    <v-btn
+      @click="$vuetify.goTo(0, 0)"
+      :class="[
+        'btn-to-top green darken-4 white--text',
+        offsetTop > 100 ? 'show' : '',
+      ]"
+      icon
+      x-large
+    >
+      <v-icon>mdi-arrow-up</v-icon>
+    </v-btn>
     <Navbar />
 
     <v-main>
@@ -101,6 +112,7 @@ export default {
   name: "App",
 
   data: () => ({
+    offsetTop: 0,
     showMenu: false,
     selectedItem: 0,
   }),
@@ -108,5 +120,29 @@ export default {
     // Dropdown,
     Navbar,
   },
+  mounted() {
+    this.onScroll();
+  },
+  methods: {
+    onScroll() {
+      window.onscroll = () => {
+        this.offsetTop = window.pageYOffset;
+      };
+    },
+  },
 };
 </script>
+<style scoped>
+.btn-to-top {
+  position: fixed;
+  bottom: -1rem;
+  opacity: 0;
+  right: 1rem;
+  z-index: 99999;
+  transition: 0.5s;
+}
+.btn-to-top.show {
+  bottom: 1rem;
+  opacity: 1;
+}
+</style>
