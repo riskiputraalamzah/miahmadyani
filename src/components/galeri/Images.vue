@@ -1,20 +1,16 @@
 <template>
   <div>
-    <v-row justify="center">
+    <v-row align="end">
       <v-col
         v-for="(album, i) in albums"
         :key="i"
-        cols="6"
-        sm="4"
-        md="3"
-        :class="[
-          'd-flex child-flex',
-          layouts == 'grid'
-            ? 'col-6 col-sm-4 col-md-3'
-            : 'col-12 col-sm-6 col-md-4 col-lg-3',
-        ]"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+        class="d-flex child-flex"
       >
-        <v-img
+        <!-- <v-img
           :src="album.img"
           :lazy-src="album.img"
           class="grey lighten-2"
@@ -28,11 +24,11 @@
               ></v-progress-circular>
             </v-row>
           </template>
-        </v-img>
-        <v-card v-else>
+        </v-img> -->
+        <v-card elevation="0">
           <v-img
             :src="album.img"
-            :aspect-ratio="$vuetify.breakpoint.xs ? '' : '1'"
+            aspect-ratio="16/9"
             :lazy-src="album.img"
             class="grey lighten-2"
           >
@@ -46,7 +42,7 @@
             </template>
           </v-img>
           <v-card-title
-            class=" font-poppins text-capitalize"
+            class="p-lh-card-title text-capitalize"
             v-text="album.text"
           ></v-card-title>
         </v-card>

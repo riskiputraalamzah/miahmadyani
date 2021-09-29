@@ -185,19 +185,15 @@ export default {
               path: "/visi-misi",
               text: "Visi Misi",
             },
-            {
-              path: "/infomasi-sekolah",
-              text: "Informasi Sekolah",
-            },
-            {
-              path: "/menu-lainnya-2",
-              text: "Menu Lainnya 2",
-            },
           ],
         },
         {
-          path: "/artikel-berita",
-          text: "ARTIKEL & BERITA",
+          path: "/artikel",
+          text: "ARTIKEL",
+        },
+        {
+          path: "/berita",
+          text: "BERITA",
         },
         {
           path: "/galeri",

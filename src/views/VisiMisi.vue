@@ -1,11 +1,11 @@
 <template>
   <div class="page-visi-misi">
     <v-container>
-      <v-breadcrumbs large light :items="items">
-        <template v-slot:divider>
-          <v-icon>mdi-chevron-right</v-icon>
-        </template>
-      </v-breadcrumbs>
+      <v-row justify="center">
+        <v-col cols="12" md="10">
+          <Breadcrumbs :items="items" />
+        </v-col>
+      </v-row>
     </v-container>
     <!-- <section class="py-10">
       <v-container>
@@ -32,9 +32,7 @@
               </span>
             </div>
 
-            <div
-              class="text-center font-poppins text-md-h4 text-h5 font-weight-medium"
-            >
+            <div class="text-center  text-md-h4 text-h5">
               <q>
                 TERWUJUDNYA GENERASI YANG BERPRESTASI, BERIMAN, DAN BERTAQWA
                 SERTA BERAKHLAKUL KARIMAH
@@ -56,7 +54,7 @@
               </span>
             </div>
 
-            <div class=" font-poppins text-md-h4 text-h5 font-weight-medium">
+            <div class="  text-md-h4 text-h5">
               <ol type="1" class="list-misi">
                 <li>Melaksanakan pembelajaran PAKEMI</li>
                 <li>
@@ -77,6 +75,7 @@
   </div>
 </template>
 <script>
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
@@ -93,6 +92,9 @@ export default {
         },
       ],
     };
+  },
+  components: {
+    Breadcrumbs,
   },
 };
 </script>

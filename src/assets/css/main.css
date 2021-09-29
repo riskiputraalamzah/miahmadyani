@@ -211,6 +211,19 @@ section:first-child {
 .v-slide-group .v-slide-group__prev {
   left: 0;
 }
+.p-lh-card-title {
+  line-height: 1.5rem !important;
+  padding: 1rem 0.5rem;
+}
+.p-card {
+  padding: 1rem 0.5rem;
+}
+.hover-underline:hover {
+  text-decoration: underline;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
 @keyframes scaleImage {
   0% {
     transform: scale(1);

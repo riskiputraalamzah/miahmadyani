@@ -74,57 +74,7 @@
         </v-row>
       </v-container>
     </section>
-    <section class="my-section py-10 ">
-      <v-container>
-        <div class="d-flex justify-space-between aling-center">
-          <div
-            class="text-md-h3  text-sm-h4 text-h5 font-weight-bold text-center"
-          >
-            <span class="font-poppins rule-headline">
-              Informasi Sekolah
-            </span>
-          </div>
-          <v-hover v-slot="{ hover }">
-            <router-link
-              :class="[
-                'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
-                hover ? 'text-decoration-underline' : 'text-decoration-none',
-              ]"
-              to="/informasi"
-            >
-              Lihat semua
-            </router-link>
-          </v-hover>
-        </div>
 
-        <v-slide-group mobile-breakpoint="0" center-active class="mt-10">
-          <v-slide-item v-for="(info, i) in informasiTerbaru" :key="i">
-            <v-hover v-slot="{ hover }">
-              <v-card
-                :class="[
-                  'ma-3 font-poppins hover-card',
-                  hover ? 'on-hover-card' : '',
-                ]"
-                color="transparent"
-                elevation="0"
-                light
-                :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
-              >
-                <v-img
-                  aspect-ratio="1.5"
-                  :lazy-src="info.image"
-                  :src="info.image"
-                ></v-img>
-                <v-card-title
-                  v-text="info.title"
-                  style="line-height:1.5rem"
-                ></v-card-title>
-              </v-card>
-            </v-hover>
-          </v-slide-item>
-        </v-slide-group>
-      </v-container>
-    </section>
     <section class="my-section py-10">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
@@ -141,7 +91,7 @@
                 'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
                 hover ? 'text-decoration-underline' : 'text-decoration-none',
               ]"
-              to="/informasi"
+              to="/artikel"
             >
               Lihat semua
             </router-link>
@@ -152,10 +102,7 @@
           <v-slide-item v-for="(info, i) in artikelTerbaru" :key="i">
             <v-hover v-slot="{ hover }">
               <v-card
-                :class="[
-                  'ma-3 font-poppins hover-card',
-                  hover ? 'on-hover-card' : '',
-                ]"
+                :class="['ma-3 hover-card', hover ? 'on-hover-card' : '']"
                 color="transparent"
                 elevation="0"
                 light
@@ -163,13 +110,40 @@
               >
                 <v-img
                   aspect-ratio="1.5"
+                  class="align-end"
+                  gradient="to top, rgba(0,0,0,0.5),transparent"
                   :lazy-src="info.image"
                   :src="info.image"
-                ></v-img>
+                >
+                  <v-chip
+                    v-for="(ctg, i) in info.category"
+                    :key="i"
+                    class="ma-2 text-uppercase"
+                    v-text="ctg"
+                    small
+                  >
+                  </v-chip>
+                </v-img>
                 <v-card-title
                   v-text="info.title"
-                  style="line-height:1.5rem"
+                  class="hover-underline cursor-pointer"
+                  style="line-height:1.5rem;padding:1rem 0.5rem;"
                 ></v-card-title>
+                <v-divider class="mx-2"></v-divider>
+                <div class=" text-subtitle-2 px-1  p-card ">
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-calendar-clock</v-icon>
+                    <span>{{ info.time }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-eye</v-icon>
+                    <span>{{ info.views }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-account</v-icon>
+                    <span>{{ info.author }}</span>
+                  </div>
+                </div>
               </v-card>
             </v-hover>
           </v-slide-item>
@@ -192,7 +166,7 @@
                 'font-poppins text-sm-h6 text-subtitle-2 d-flex align-center  red--text',
                 hover ? 'text-decoration-underline' : 'text-decoration-none',
               ]"
-              to="/informasi"
+              to="/berita"
             >
               Lihat semua
             </router-link>
@@ -203,10 +177,7 @@
           <v-slide-item v-for="(info, i) in beritaTerbaru" :key="i">
             <v-hover v-slot="{ hover }">
               <v-card
-                :class="[
-                  'ma-3 font-poppins hover-card',
-                  hover ? 'on-hover-card' : '',
-                ]"
+                :class="['ma-3 hover-card', hover ? 'on-hover-card' : '']"
                 color="transparent"
                 elevation="0"
                 light
@@ -214,13 +185,45 @@
               >
                 <v-img
                   aspect-ratio="1.5"
+                  class="align-end"
+                  gradient="to top, rgba(0,0,0,0.5),transparent"
                   :lazy-src="info.image"
                   :src="info.image"
-                ></v-img>
-                <v-card-title
-                  v-text="info.title"
-                  style="line-height:1.5rem"
-                ></v-card-title>
+                >
+                  <v-chip
+                    v-for="(ctg, i) in info.category"
+                    :key="i"
+                    class="ma-2 text-uppercase"
+                    v-text="ctg"
+                    small
+                  >
+                  </v-chip>
+                </v-img>
+                <router-link
+                  class="black--text text-decoration-none"
+                  :to="{ name: 'showArtikel', params: { slug: info.slug } }"
+                >
+                  <v-card-title
+                    v-text="info.title"
+                    class="hover-underline cursor-pointer"
+                    style="line-height:1.5rem;padding:1rem 0.5rem;"
+                  ></v-card-title>
+                </router-link>
+                <v-divider class="mx-2"></v-divider>
+                <div class=" text-subtitle-2 px-1  p-card ">
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-calendar-clock</v-icon>
+                    <span>{{ info.time }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-eye</v-icon>
+                    <span>{{ info.views }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-2">mdi-account</v-icon>
+                    <span>{{ info.author }}</span>
+                  </div>
+                </div>
               </v-card>
             </v-hover>
           </v-slide-item>
@@ -311,9 +314,64 @@ export default {
       },
     ];
 
-    this.informasiTerbaru = this.cutString(dataInformasiTerbaru, "title", 50);
-    this.artikelTerbaru = this.cutString(dataInformasiTerbaru, "title", 50);
-    this.beritaTerbaru = this.cutString(dataInformasiTerbaru, "title", 50);
+    const dataArtikel = [
+      {
+        image:
+          "https://ilfiwomen.org/wp-content/uploads/2020/10/artikel-pendidikan.jpg",
+        category: ["pendidikan"],
+        title: "Pendidikan Karakter Untuk Membangun Peradaban Bangsa",
+        time: "Hari ini 21.45",
+        author: "admin",
+        views: "153",
+      },
+      {
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPJKKHFypNTfzQXE-dTFDMNEPxf9Ipwt21NQ&usqp=CAU",
+        category: ["religi"],
+        title: "Bulan Ramadhan yang Penuh Berkah",
+        time: "Kemarin 19.25",
+        author: "Yusuf S.pd",
+        views: "200",
+      },
+    ];
+    const dataBerita = [
+      {
+        image: "/images/galeri/2.jpg",
+        category: ["kunjungan"],
+        title: "Pembinaan Orientasi Kesehatan oleh Puskesmas",
+        time: "Hari ini 09.00",
+        author: "admin",
+        views: "1.500",
+      },
+      {
+        image: "/images/galeri/15.jpg",
+        category: ["festival"],
+        title: "HSN beserta Banom di Kabupaten Sidoarjo ",
+        time: "2 hari yang lalu 09.00",
+        author: "admin",
+        views: "1.163",
+      },
+      {
+        image: "/images/galeri/1.jpg",
+        category: ["kejuaraan"],
+        title: "JUARA TAHFIDZIL QUR’AN JUZ 30 LOMBA TINGKAT KABUPATEN DI CANDI",
+        time: "1 minggu yang lalu",
+        author: "admin",
+        views: "563",
+      },
+      {
+        image: "/images/galeri/40.jpg",
+        category: ["kejuaraan"],
+        title: "Lomba Pidato",
+        time: "1 bulan yang lalu",
+        author: "admin",
+        views: "754",
+      },
+    ];
+
+    this.informasiTerbaru = this.cutString(dataInformasiTerbaru, "title", 100);
+    this.artikelTerbaru = this.cutString(dataArtikel, "title", 100);
+    this.beritaTerbaru = this.cutString(dataBerita, "title", 100);
 
     this.sliders = dataSlider;
   },
@@ -325,7 +383,10 @@ export default {
           obj[key].length > max
             ? obj[key].substring(0, max) + "..."
             : obj[key].substring(0, max);
-
+        obj["slug"] = item.title
+          .toLowerCase()
+          .split(" ")
+          .join("-");
         return obj;
       });
     },

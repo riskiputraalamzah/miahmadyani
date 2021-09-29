@@ -1,13 +1,9 @@
 <template>
   <div>
     <v-container>
-      <v-breadcrumbs large light :items="items">
-        <template v-slot:divider>
-          <v-icon>mdi-chevron-right</v-icon>
-        </template>
-      </v-breadcrumbs>
+      <Breadcrumbs :items="items" />
 
-      <section class="my-section">
+      <section class="my-section py-10">
         <div
           class="text-md-h3 mb-10 text-sm-h4 text-h5 font-weight-bold text-center"
         >
@@ -56,7 +52,7 @@
             </v-tooltip>
           </v-btn-toggle>
 
-          <v-btn-toggle
+          <!-- <v-btn-toggle
             v-model="selectedView"
             mandatory
             rounded
@@ -91,7 +87,7 @@
               </template>
               <span>View Card</span>
             </v-tooltip>
-          </v-btn-toggle>
+          </v-btn-toggle> -->
         </div>
         <!-- area -->
         <v-fade-transition>
@@ -104,6 +100,7 @@
 </template>
 
 <script>
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import Images from "@/components/galeri/Images.vue";
 import Videos from "@/components/galeri/Videos.vue";
 export default {
@@ -129,6 +126,7 @@ export default {
   components: {
     Images,
     Videos,
+    Breadcrumbs,
   },
 };
 </script>
