@@ -1,6 +1,138 @@
 <template>
   <div>
-    <v-row align="end">
+    <v-row justify="center">
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card elevation="0">
+          <v-img
+            aspect-ratio="1"
+            lazy-src="/images/galeri/1.jpg"
+            src="/images/galeri/1.jpg"
+          ></v-img>
+
+          <v-card-actions
+            class="d-flex flex-sm-column flex-row justify-space-between flex-wrap cursor-pointer align-start hover-underline "
+          >
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-folder-account-outline</v-icon>
+              <span>Yusuf S,pd</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-grid</v-icon>
+              <span>16 Item</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <span>19/09/2021 20:18</span>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card elevation="0">
+          <v-img
+            aspect-ratio="1"
+            lazy-src="/images/galeri/gambar-3.jpg"
+            src="/images/galeri/gambar-3.jpg"
+          ></v-img>
+
+          <v-card-actions
+            class="d-flex flex-sm-column flex-row justify-space-between flex-wrap cursor-pointer align-start hover-underline "
+          >
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-folder-account-outline</v-icon>
+              <span>Yusuf S,pd</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-grid</v-icon>
+              <span>16 Item</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <span>19/09/2021 20:18</span>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card elevation="0">
+          <v-img
+            aspect-ratio="1"
+            lazy-src="/images/galeri/2.jpg"
+            src="/images/galeri/2.jpg"
+          ></v-img>
+
+          <v-card-actions
+            class="d-flex flex-sm-column flex-row justify-space-between flex-wrap cursor-pointer align-start hover-underline "
+          >
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-folder-account-outline</v-icon>
+              <span>Yusuf S,pd</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-grid</v-icon>
+              <span>16 Item</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <span>19/09/2021 20:18</span>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card elevation="0">
+          <v-img
+            aspect-ratio="1"
+            lazy-src="/images/galeri/10.jpg"
+            src="/images/galeri/10.jpg"
+          ></v-img>
+
+          <v-card-actions
+            class="d-flex flex-sm-column flex-row justify-space-between flex-wrap cursor-pointer align-start hover-underline "
+          >
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-folder-account-outline</v-icon>
+              <span>Admin</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-grid</v-icon>
+              <span>16 Item</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <span>19/09/2021 20:18</span>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col cols="12" sm="6" md="4" lg="3">
+        <v-card elevation="0">
+          <v-img
+            aspect-ratio="1"
+            lazy-src="/images/galeri/gambar-2.jpg"
+            src="/images/galeri/gambar-2.jpg"
+          ></v-img>
+
+          <v-card-actions
+            class="d-flex flex-sm-column flex-row justify-space-between flex-wrap cursor-pointer align-start hover-underline "
+          >
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-folder-account-outline</v-icon>
+              <span>Admin</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-grid</v-icon>
+              <span>16 Item</span>
+            </div>
+            <div class="d-flex my-1 align-center">
+              <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <span>19/09/2021 20:18</span>
+            </div>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+    <!-- <v-row align="end">
       <v-col
         v-for="(album, i) in albums"
         :key="i"
@@ -10,21 +142,7 @@
         lg="3"
         class="d-flex child-flex"
       >
-        <!-- <v-img
-          :src="album.img"
-          :lazy-src="album.img"
-          class="grey lighten-2"
-          v-if="layouts == 'grid'"
-        >
-          <template v-slot:placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular
-                indeterminate
-                color="grey lighten-5"
-              ></v-progress-circular>
-            </v-row>
-          </template>
-        </v-img> -->
+
         <v-card elevation="0">
           <v-img
             :src="album.img"
@@ -47,7 +165,7 @@
           ></v-card-title>
         </v-card>
       </v-col>
-    </v-row>
+    </v-row> -->
   </div>
 </template>
 

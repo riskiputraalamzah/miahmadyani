@@ -115,7 +115,12 @@
                 @click="activeMenu = 'child' in menu ? i : null"
                 :class="[
                   'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
-                  activeMenu === i ? 'v-item--active v-list-item--active' : '',
+                  activeMenu === i ||
+                  activeParentRoute(
+                    'path' in menu ? menu.path.split('/')[1] : 'FALSE'
+                  )
+                    ? 'v-item--active v-list-item--active'
+                    : '',
                 ]"
               >
                 <v-list-item-content class="py-0">
@@ -218,6 +223,9 @@ export default {
     //     this.showMenu = !this.showMenu;
     //   }
     // },
+    activeParentRoute(value) {
+      return this.$route.path.split("/")[1] === value;
+    },
     search() {
       if (this.keyword) {
         alert(this.keyword);

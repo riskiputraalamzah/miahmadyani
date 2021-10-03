@@ -1,71 +1,77 @@
 <template>
   <div>
     <v-container>
-      <v-row justify="center">
-        <v-col cols="12" md="10" xl="8">
-          <Breadcrumbs :items="items" />
-          <section class="py-10">
-            <div
-              class="text-md-h3 mb-10 text-sm-h4 text-h5 font-weight-bold text-center"
-            >
-              <span class="font-poppins rule-headline">
-                Berita
-              </span>
-            </div>
-            <v-row justify="center">
-              <v-col cols="12" v-for="(item, i) in data" :key="i">
-                <v-row align="center">
-                  <v-col cols="4" lg="3">
-                    <v-img
-                      aspect-ratio="1"
-                      :lazy-src="item.image"
-                      :src="item.image"
-                    ></v-img>
-                  </v-col>
-                  <v-col
-                    cols="8"
-                    lg="9"
-                    class="d-flex flex-column justify-space-around"
+      <Breadcrumbs :items="items" />
+      <section class="py-10">
+        <div
+          class="text-md-h3 mb-10 text-sm-h3 text-h4 font-weight-bold text-center"
+        >
+          <span class="font-poppins rule-headline">
+            {{ titlePage }}
+          </span>
+        </div>
+
+        <v-row justify="center">
+          <v-col
+            cols="12"
+            sm="6"
+            md="4"
+            lg="3"
+            v-for="(info, i) in data"
+            :key="i"
+          >
+            <v-hover v-slot="{ hover }">
+              <v-card
+                :class="['ma-3 hover-card', hover ? 'on-hover-card' : '']"
+                color="transparent"
+                elevation="0"
+                light
+              >
+                <v-img
+                  aspect-ratio="1.5"
+                  class="align-end"
+                  gradient="to top, rgba(0,0,0,0.2),transparent"
+                  :lazy-src="info.image"
+                  :src="info.image"
+                >
+                  <v-chip
+                    v-for="(ctg, i) in info.category"
+                    :key="i"
+                    class="ma-2 text-uppercase"
+                    v-text="ctg"
+                    small
                   >
-                    <div>
-                      <v-chip
-                        v-for="(ctg, i) in item.category"
-                        :key="i"
-                        class="ma-2 text-uppercase p-card"
-                        v-text="ctg"
-                        small
-                      >
-                      </v-chip>
-                    </div>
-                    <v-card flat>
-                      <v-card-title
-                        class="p-lh-card-title hover-underline cursor-pointer"
-                        v-text="item.title"
-                      ></v-card-title>
-                    </v-card>
-                    <div
-                      class=" text-subtitle-2 px-1  p-card d-flex flex-md-row flex-column justify-space-between "
-                    >
-                      <div class="d-flex my-1  align-center">
-                        <v-icon class="mr-2">mdi-calendar-clock</v-icon>
-                        <span>{{ item.time }}</span>
-                      </div>
-                      <div class="d-flex my-1  align-center">
-                        <v-icon class="mr-2">mdi-eye</v-icon>
-                        <span>{{ item.views }}</span>
-                      </div>
-                      <div class="d-flex my-1  align-center">
-                        <v-icon class="mr-2">mdi-account</v-icon>
-                        <span>{{ item.author }}</span>
-                      </div>
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-col>
-            </v-row>
-          </section>
-        </v-col>
-      </v-row>
+                  </v-chip>
+                </v-img>
+
+                <v-card-title
+                  v-text="info.title"
+                  class="hover-underline cursor-pointer"
+                  style="line-height:1.5rem;padding:1rem 0.5rem;"
+                ></v-card-title>
+
+                <v-divider class="mx-2"></v-divider>
+                <div
+                  class=" text-subtitle-2 px-1  p-card d-flex d-sm-block justify-space-between flex-wrap"
+                >
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+                    <span>{{ info.time }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-1">mdi-eye</v-icon>
+                    <span>{{ info.views }}</span>
+                  </div>
+                  <div class="d-flex my-1  align-center">
+                    <v-icon class="mr-1">mdi-account</v-icon>
+                    <span>{{ info.author }}</span>
+                  </div>
+                </div>
+              </v-card>
+            </v-hover>
+          </v-col>
+        </v-row>
+      </section>
     </v-container>
   </div>
 </template>
@@ -75,6 +81,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
+      titlePage: "Berita",
       items: [
         {
           text: "Home",
@@ -94,41 +101,9 @@ export default {
     Breadcrumbs,
   },
   created() {
-    const data = [
-      {
-        image: "/images/galeri/2.jpg",
-        category: ["kunjungan"],
-        title: "Pembinaan Orientasi Kesehatan oleh Puskesmas",
-        time: "Hari ini 09.00",
-        author: "admin",
-        views: "1.500",
-      },
-      {
-        image: "/images/galeri/15.jpg",
-        category: ["festival"],
-        title: "HSN beserta Banom di Kabupaten Sidoarjo ",
-        time: "2 hari yang lalu 09.00",
-        author: "admin",
-        views: "1.163",
-      },
-      {
-        image: "/images/galeri/1.jpg",
-        category: ["kejuaraan"],
-        title: "JUARA TAHFIDZIL QUR’AN JUZ 30 LOMBA TINGKAT KABUPATEN DI CANDI",
-        time: "1 minggu yang lalu",
-        author: "admin",
-        views: "563",
-      },
-      {
-        image: "/images/galeri/40.jpg",
-        category: ["kejuaraan"],
-        title: "Lomba Pidato",
-        time: "1 bulan yang lalu",
-        author: "admin",
-        views: "754",
-      },
-    ];
-    this.data = this.createSlug(data);
+    this.$store.dispatch("setTitlePage", this.titlePage);
+
+    this.data = this.createSlug(this.$store.getters.dataBerita);
   },
   methods: {
     createSlug(list) {

@@ -121,8 +121,12 @@ export default {
     zip: null,
     country: null,
     formHasErrors: false,
+    titlePage: "Kontak",
   }),
 
+  created() {
+    this.$store.dispatch("setTitlePage", this.titlePage);
+  },
   computed: {
     form() {
       return {
@@ -161,7 +165,7 @@ export default {
         cek.push(this.$refs[f].validate(true));
       });
 
-      if (cek) {
+      if (cek.every((e) => e === true)) {
         this.loading = true;
 
         setTimeout(() => {

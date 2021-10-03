@@ -7,19 +7,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <!-- <section class="py-10">
-      <v-container>
-        <v-row>
-          <v-col cols="12" md="6">
-            <div class="box  text-md-h3 pb-10 text-h4 font-weight-bold ">
-              <span class="font-poppins rule-headline">
-                Visi
-              </span>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section> -->
+
     <section class="py-10">
       <v-container>
         <v-row justify="center">
@@ -79,6 +67,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
+      titlePage: "Visi Misi",
       items: [
         {
           text: "Home",
@@ -95,6 +84,9 @@ export default {
   },
   components: {
     Breadcrumbs,
+  },
+  created() {
+    this.$store.dispatch("setTitlePage", this.titlePage);
   },
 };
 </script>

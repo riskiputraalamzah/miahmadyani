@@ -137,7 +137,7 @@
                   </div>
                   <div class="d-flex my-1  align-center">
                     <v-icon class="mr-2">mdi-eye</v-icon>
-                    <span>{{ info.views }}</span>
+                    <span>{{ numberWithCommas(info.views) }}</span>
                   </div>
                   <div class="d-flex my-1  align-center">
                     <v-icon class="mr-2">mdi-account</v-icon>
@@ -199,16 +199,13 @@
                   >
                   </v-chip>
                 </v-img>
-                <router-link
-                  class="black--text text-decoration-none"
-                  :to="{ name: 'showArtikel', params: { slug: info.slug } }"
-                >
-                  <v-card-title
-                    v-text="info.title"
-                    class="hover-underline cursor-pointer"
-                    style="line-height:1.5rem;padding:1rem 0.5rem;"
-                  ></v-card-title>
-                </router-link>
+
+                <v-card-title
+                  v-text="info.title"
+                  class="hover-underline cursor-pointer"
+                  style="line-height:1.5rem;padding:1rem 0.5rem;"
+                ></v-card-title>
+
                 <v-divider class="mx-2"></v-divider>
                 <div class=" text-subtitle-2 px-1  p-card ">
                   <div class="d-flex my-1  align-center">
@@ -217,7 +214,7 @@
                   </div>
                   <div class="d-flex my-1  align-center">
                     <v-icon class="mr-2">mdi-eye</v-icon>
-                    <span>{{ info.views }}</span>
+                    <span>{{ numberWithCommas(info.views) }}</span>
                   </div>
                   <div class="d-flex my-1  align-center">
                     <v-icon class="mr-2">mdi-account</v-icon>
@@ -237,6 +234,7 @@ import HeroContent from "@/components/HeroContent.vue";
 export default {
   data() {
     return {
+      titlePage: "Home",
       sliders: [],
       informasiTerbaru: [],
       artikelTerbaru: [],
@@ -262,37 +260,7 @@ export default {
   },
 
   created() {
-    const dataInformasiTerbaru = [
-      {
-        image: "/images/galeri/gambar-1.jpg",
-        title: "Lorem ipsum dolor sit amet.",
-      },
-      {
-        image: "/images/galeri/gambar-2.jpg",
-        title: "Lorem ipsum dolor sit amet consectetursdsdsd",
-      },
-      {
-        image: "/images/galeri/gambar-3.jpg",
-        title: "Lorem ipsum dolor sit amet consecteturdfdgfdfdgfdfee3r3r3rewre",
-      },
-      {
-        image: "/images/galeri/gambar-4.jpg",
-        title: "Lorem ipsum ",
-      },
-      {
-        image: "/images/galeri/gambar-4.jpg",
-        title: "Lorem ipsum dolor sit amet consectetur dfdfdfd",
-      },
-      {
-        image: "/images/galeri/gambar-4.jpg",
-        title:
-          "Lorem ipsum dolor sit amet consectetur sdsfdsfsffdfdfdfdfsfdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsfsdfsdf",
-      },
-      {
-        image: "/images/galeri/gambar-5.jpg",
-        title: "Lorem ipsum dolor sit amet consectetur",
-      },
-    ];
+    this.$store.dispatch("setTitlePage");
 
     const dataSlider = [
       {
@@ -314,64 +282,16 @@ export default {
       },
     ];
 
-    const dataArtikel = [
-      {
-        image:
-          "https://ilfiwomen.org/wp-content/uploads/2020/10/artikel-pendidikan.jpg",
-        category: ["pendidikan"],
-        title: "Pendidikan Karakter Untuk Membangun Peradaban Bangsa",
-        time: "Hari ini 21.45",
-        author: "admin",
-        views: "153",
-      },
-      {
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPJKKHFypNTfzQXE-dTFDMNEPxf9Ipwt21NQ&usqp=CAU",
-        category: ["religi"],
-        title: "Bulan Ramadhan yang Penuh Berkah",
-        time: "Kemarin 19.25",
-        author: "Yusuf S.pd",
-        views: "200",
-      },
-    ];
-    const dataBerita = [
-      {
-        image: "/images/galeri/2.jpg",
-        category: ["kunjungan"],
-        title: "Pembinaan Orientasi Kesehatan oleh Puskesmas",
-        time: "Hari ini 09.00",
-        author: "admin",
-        views: "1.500",
-      },
-      {
-        image: "/images/galeri/15.jpg",
-        category: ["festival"],
-        title: "HSN beserta Banom di Kabupaten Sidoarjo ",
-        time: "2 hari yang lalu 09.00",
-        author: "admin",
-        views: "1.163",
-      },
-      {
-        image: "/images/galeri/1.jpg",
-        category: ["kejuaraan"],
-        title: "JUARA TAHFIDZIL QUR’AN JUZ 30 LOMBA TINGKAT KABUPATEN DI CANDI",
-        time: "1 minggu yang lalu",
-        author: "admin",
-        views: "563",
-      },
-      {
-        image: "/images/galeri/40.jpg",
-        category: ["kejuaraan"],
-        title: "Lomba Pidato",
-        time: "1 bulan yang lalu",
-        author: "admin",
-        views: "754",
-      },
-    ];
-
-    this.informasiTerbaru = this.cutString(dataInformasiTerbaru, "title", 100);
-    this.artikelTerbaru = this.cutString(dataArtikel, "title", 100);
-    this.beritaTerbaru = this.cutString(dataBerita, "title", 100);
+    this.artikelTerbaru = this.cutString(
+      this.$store.getters.dataArtikel,
+      "title",
+      100
+    );
+    this.beritaTerbaru = this.cutString(
+      this.$store.getters.dataBerita,
+      "title",
+      100
+    );
 
     this.sliders = dataSlider;
   },
@@ -405,16 +325,4 @@ section.my-section:nth-child(odd) {
 /* .hover-card {
   transition: 0.5s ease;
 } */
-.hover-card.on-hover-card {
-  animation: bounce 1s infinite;
-}
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
 </style>
