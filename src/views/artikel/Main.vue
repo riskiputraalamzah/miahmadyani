@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-container>
-      <Breadcrumbs :items="items" />
       <section class="py-10">
         <div
           class="text-md-h3 mb-10 text-sm-h3 text-h4 font-weight-bold text-center"
@@ -77,23 +76,11 @@
 </template>
 
 <script>
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
       titlePage: "Artikel",
-      items: [
-        {
-          text: "Home",
-          disabled: false,
-          to: "/",
-        },
-        {
-          text: "Artikel",
-          disabled: true,
-          to: "/artikel",
-        },
-      ],
+
       data: [],
     };
   },
@@ -102,9 +89,7 @@ export default {
 
     this.data = this.createSlug(this.$store.getters.dataArtikel);
   },
-  components: {
-    Breadcrumbs,
-  },
+
   methods: {
     createSlug(list) {
       return list.map((item) => {

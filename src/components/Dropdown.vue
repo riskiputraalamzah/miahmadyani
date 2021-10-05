@@ -2,10 +2,11 @@
   <div>
     <v-menu
       open-on-hover
-      rounded="0"
       bottom
+      right
       offset-y
-      transition="slide-y-transition"
+      rounded="lg"
+      transition="fab-transition"
       v-if="$vuetify.breakpoint.width > 599"
     >
       <template v-slot:activator="{ on, attrs }">
@@ -46,8 +47,7 @@
         <template v-slot:activator>
           <v-list-item-title
             :class="[
-              'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0',
-              parentKey != countMenu ? 'pb-3' : 'pb-0',
+              'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0 pb-3',
             ]"
             v-text="text"
           ></v-list-item-title>

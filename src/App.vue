@@ -15,7 +15,12 @@
 
     <v-main>
       <v-fade-transition>
-        <router-view></router-view>
+        <div>
+          <v-container v-show="$route.name != 'home'">
+            <Breadcrumbs :items="breadCrumbs" />
+          </v-container>
+          <router-view></router-view>
+        </div>
       </v-fade-transition>
     </v-main>
     <Footer />
@@ -23,6 +28,7 @@
 </template>
 
 <script>
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 
@@ -38,6 +44,42 @@ export default {
   components: {
     Navbar,
     Footer,
+    Breadcrumbs,
+  },
+  computed: {
+    breadCrumbs() {
+      let pathArray = this.$route.path.split("/");
+      pathArray.shift();
+      const breadCrumbs = [];
+      // needed to handle the intermediary entries for nested vue routes
+      let breadcrumb = "";
+      let lastIndexFound = 0;
+      for (let i = 0; i < pathArray.length; ++i) {
+        breadcrumb = `${breadcrumb}${"/"}${pathArray[i]}`;
+        if (
+          this.$route.matched[i] &&
+          Object.hasOwnProperty.call(this.$route.matched[i], "meta") &&
+          Object.hasOwnProperty.call(this.$route.matched[i].meta, "breadCrumb")
+        ) {
+          breadCrumbs.push({
+            to:
+              i !== 0 && pathArray[i - (i - lastIndexFound)]
+                ? "/" + pathArray[i - (i - lastIndexFound)] + breadcrumb
+                : breadcrumb,
+            disabled: i + 1 === pathArray.length,
+            text: this.$route.matched[i].meta.breadCrumb || pathArray[i],
+          });
+          lastIndexFound = i;
+          breadcrumb = "";
+        }
+      }
+      breadCrumbs.unshift({
+        to: "/",
+        disabled: false,
+        text: "Home",
+      });
+      return breadCrumbs;
+    },
   },
   mounted() {
     this.onScroll();

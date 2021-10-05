@@ -138,7 +138,7 @@ html body .v-application .font-logo {
 }
 .hero__content .v-image .v-responsive__content .information {
   position: absolute;
-  border-radius: 5px 0 0 5px;
+  border-radius: 7px 0 0 7px;
   border-left: 6px solid var(--semiYellow);
   bottom: calc(2vw + 0.5rem);
   left: calc(2vw + 0.5rem);
@@ -149,15 +149,18 @@ html body .v-application .font-logo {
 }
 
 .rule-headline {
-  position: relative;
+  /* position: relative; */
+  display: inline-block;
 }
 .rule-headline::after {
   content: "";
-  position: absolute;
+  /* position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  bottom: -0.75rem;
+  bottom: -0.75rem; */
   height: 5px;
+  display: block;
+  margin: 1rem auto 0;
   width: 75%;
   border-radius: 50%;
   background-image: var(--myGradient);
@@ -227,6 +230,10 @@ section:first-child {
 
 .hover-card.on-hover-card {
   animation: bounce 1s infinite;
+}
+
+.my-section.program-pendidikan .title-row {
+  color: var(--green);
 }
 @keyframes bounce {
   0%,

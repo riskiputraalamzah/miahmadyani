@@ -67,10 +67,7 @@
           </v-btn>
 
           <v-expand-transition>
-            <div
-              class="mx-auto"
-              v-show="$vuetify.breakpoint.width > 599 || showMenu"
-            >
+            <div class="mx-auto" v-show="$vuetify.breakpoint.width > 599">
               <v-form class="mt-md-8 mt-sm-6 mt-2" @submit.prevent>
                 <v-text-field
                   v-model="keyword"
@@ -88,7 +85,7 @@
           <v-expand-transition>
             <div
               class="mx-auto mt-sm-3 mt-0"
-              v-show="$vuetify.breakpoint.width > 599 || showMenu"
+              v-show="$vuetify.breakpoint.width > 599"
             >
               <div class="mb-4 mb-md-0 ">
                 <v-btn color="success" class="mx-2" large>login</v-btn>
@@ -101,8 +98,9 @@
         </div>
       </v-container>
 
+      <!-- menu for  device large screen -->
       <v-expand-transition>
-        <div v-show="$vuetify.breakpoint.width > 599 || showMenu">
+        <div v-show="$vuetify.breakpoint.width > 599">
           <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
             <v-list-item-group class="d-sm-flex d-block" color="transparent">
               <v-list-item disabled class="d-sm-block d-none"></v-list-item>
@@ -148,6 +146,76 @@
           </v-list>
         </div>
       </v-expand-transition>
+
+      <!-- menu for device small screen on breakpoint < 600 -->
+
+      <v-navigation-drawer
+        v-show="(showMenu = $vuetify.breakpoint.width > 599 ? false : showMenu)"
+        style="width:70vw;"
+        v-model="showMenu"
+        app
+        temporary
+      >
+        <v-form class=" pa-3  pb-0" @submit.prevent>
+          <v-text-field
+            v-model="keyword"
+            color="success"
+            rounded
+            label="Search"
+            append-icon="mdi-magnify"
+            @click:append="search"
+            outlined
+            clearable
+          ></v-text-field>
+        </v-form>
+        <div class="mb-8 d-flex justify-center">
+          <v-btn color="success" class="mx-2" large>login</v-btn>
+          <v-btn color="success" class="mx-2" outlined large>daftar</v-btn>
+        </div>
+        <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
+          <v-list-item-group class="d-sm-flex d-block" color="transparent">
+            <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+
+            <v-list-item
+              v-for="(menu, i) in menus"
+              :key="i"
+              :to="menu.path"
+              exact
+              @click="activeMenu = 'child' in menu ? i : null"
+              :class="[
+                'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
+                activeMenu === i ||
+                activeParentRoute(
+                  'path' in menu ? menu.path.split('/')[1] : 'FALSE'
+                )
+                  ? 'v-item--active v-list-item--active'
+                  : '',
+              ]"
+            >
+              <v-list-item-content class="py-0">
+                <Dropdown
+                  :text="menu.text"
+                  :parentKey="i"
+                  :countMenu="menus.length - 1"
+                  @activeParentMenu="activeMenu = $event"
+                  :menus="menu.child"
+                  v-if="'child' in menu"
+                />
+                <v-list-item-title
+                  v-else
+                  height="100%"
+                  :class="[
+                    'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0 pb-3',
+                    ,
+                  ]"
+                  v-text="menu.text"
+                ></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
     </div>
   </div>
 </template>
@@ -187,8 +255,34 @@ export default {
           text: "PROFIL",
           child: [
             {
+              path: "/struktur-organisasi",
+              text: "STRUKTUR ORGANISASI",
+            },
+            {
               path: "/visi-misi",
-              text: "Visi Misi",
+              text: "VISI MISI",
+            },
+          ],
+        },
+
+        {
+          text: "INFORMASI",
+          child: [
+            {
+              path: "/liputan-event",
+              text: "LIPUTAN EVENT",
+            },
+            {
+              path: "/pengumuman",
+              text: "PENGUMUMAN",
+            },
+            {
+              path: "/prestasi",
+              text: "PRESTASI",
+            },
+            {
+              path: "/alumni",
+              text: "ALUMNI",
             },
           ],
         },
@@ -196,19 +290,92 @@ export default {
           path: "/artikel",
           text: "ARTIKEL",
         },
+
         {
-          path: "/berita",
-          text: "BERITA",
+          text: "BERKAS",
+          child: [
+            {
+              path: "/guru",
+              text: "GURU",
+            },
+            {
+              path: "/siswa",
+              text: "SISWA",
+            },
+          ],
+        },
+
+        {
+          text: "PROGRAM KEUNGGULAN",
+          child: [
+            {
+              path: "/tahfidzul-quran",
+              text: "TAHFIDZUL QUR'AN",
+            },
+            {
+              path: "/tahsinul-quran",
+              text: "TAHSINUL QUR'AN",
+            },
+            {
+              path: "/pembiasaan-sholat-dhuha",
+              text: "PEMBIASAAN SHOLAT DHUHA",
+            },
+            {
+              path: "/istighosah",
+              text: "ISTIGHOSAH",
+            },
+            {
+              path: "/pembacaan-asmaul-husnah",
+              text: "PEMBACAAN ASMAUL HUSNAH",
+            },
+            {
+              path: "/juz-amma",
+              text: "PEMBACAAN JUZ ‘AMMA DAN MAJMU’ SYARIF",
+            },
+            {
+              path: "/sholat-jamaah",
+              text: "SHOLAT JAMA'AH",
+            },
+            {
+              path: "/qiroah",
+              text: "QIRO'AH",
+            },
+            {
+              path: "/bela-diri",
+              text: "BELA DIRI",
+            },
+            {
+              path: "/pramuka",
+              text: "PRAMUKA",
+            },
+            {
+              path: "/drum-band",
+              text: "DRUM BAND",
+            },
+            {
+              path: "/out-bond",
+              text: "OUT BOND",
+            },
+          ],
         },
         {
           path: "/galeri",
           text: "GALERI",
         },
-
         {
-          path: "/kontak",
-          text: "KONTAK",
+          path: "/angket-sekolah",
+          text: "ANGKET SEKOLAH",
         },
+
+        // {
+        //   path: "/galeri",
+        //   text: "GALERI",
+        // },
+
+        // {
+        //   path: "/kontak",
+        //   text: "KONTAK",
+        // },
       ],
     };
   },
@@ -224,6 +391,9 @@ export default {
     //   }
     // },
     activeParentRoute(value) {
+      if (this.$route.path === "/") {
+        this.activeMenu = null;
+      }
       return this.$route.path.split("/")[1] === value;
     },
     search() {

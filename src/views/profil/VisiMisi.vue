@@ -1,13 +1,5 @@
 <template>
   <div class="page-visi-misi">
-    <v-container>
-      <v-row justify="center">
-        <v-col cols="12" md="10">
-          <Breadcrumbs :items="items" />
-        </v-col>
-      </v-row>
-    </v-container>
-
     <section class="py-10">
       <v-container>
         <v-row justify="center">
@@ -63,7 +55,7 @@
   </div>
 </template>
 <script>
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
+// import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
@@ -83,7 +75,7 @@ export default {
     };
   },
   components: {
-    Breadcrumbs,
+    // Breadcrumbs,
   },
   created() {
     this.$store.dispatch("setTitlePage", this.titlePage);

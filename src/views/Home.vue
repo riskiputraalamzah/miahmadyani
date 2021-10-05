@@ -9,12 +9,7 @@
           height="40vmax"
           hide-delimiters
         >
-          <v-carousel-item
-            reverse-transition="scale-transition"
-            transition="scale-transition"
-            v-for="(slide, i) in sliders"
-            :key="i"
-          >
+          <v-carousel-item v-for="(slide, i) in sliders" :key="i">
             <v-img
               height="100%"
               gradient="to top right, rgba(0,0,0,0.7),rgba(0,0,0,0.4),transparent"
@@ -46,13 +41,11 @@
 
         <v-row justify="center" align="center" class="mt-10">
           <v-col cols="12" md="5" sm="10">
-            <v-card elevation="10">
-              <v-img
-                elevat
-                lazy-src="/images/slider-4.jpg"
-                src="/images/slider-4.jpg"
-              ></v-img>
-            </v-card>
+            <v-img
+              class="rounded-lg"
+              lazy-src="/images/slider-4.jpg"
+              src="/images/slider-4.jpg"
+            ></v-img>
           </v-col>
           <v-col cols="12" md="7" sm="10">
             <div class="text-justify">
@@ -70,6 +63,61 @@
                 ipsa aliquid ipsum!
               </p>
             </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </section>
+
+    <section class="my-section program-pendidikan py-10">
+      <v-container>
+        <div
+          class="text-md-h3 mb-15  text-sm-h4 text-h5 font-weight-bold text-center"
+        >
+          <span class="font-poppins rule-headline">
+            Program Pendidikan
+          </span>
+        </div>
+        <div class="text-center  text-sm-h6 text-headline">
+          Berikut beberapa program pendidikan sekolah kita
+        </div>
+
+        <v-row
+          v-for="(program, i) in programPendidikan"
+          :key="i"
+          :class="[i % 2 == 1 ? 'flex-row-reverse' : '', 'my-5']"
+          justify="center"
+          align="center"
+          class="py-5"
+        >
+          <v-col cols="8" sm="6" md="4">
+            <v-img
+              class="rounded-lg "
+              contain
+              :src="program.image"
+              :lazy-src="program.image"
+            ></v-img>
+          </v-col>
+          <v-col cols="12" sm="6" md="8" class="text-center">
+            <v-lazy
+              v-model="program.isActive"
+              :options="{
+                threshold: 0.5,
+              }"
+              min-height="200"
+              transition="slide-y-reverse-transition"
+            >
+              <div>
+                <div
+                  class="title-row mb-5 font-weight-bold font-poppins text-sm-h4 text-h5"
+                >
+                  {{ program.title }}
+                </div>
+
+                <div class="text-sm-h6 text-headline">
+                  {{ program.text }}
+                </div>
+              </div>
+            </v-lazy>
           </v-col>
         </v-row>
       </v-container>
@@ -150,7 +198,7 @@
         </v-slide-group>
       </v-container>
     </section>
-    <section class="my-section py-10 ">
+    <!-- <section class="my-section py-10 ">
       <v-container>
         <div class="d-flex justify-space-between aling-center">
           <div
@@ -226,7 +274,7 @@
           </v-slide-item>
         </v-slide-group>
       </v-container>
-    </section>
+    </section> -->
   </div>
 </template>
 <script>
@@ -251,6 +299,57 @@ export default {
           src: "/images/slider-4.jpg",
           title: "Halcyon Days",
           artist: "Ellie Goulding",
+        },
+      ],
+      programPendidikan: [
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/matrikulasi.png",
+          title: "Program Matrikulasi",
+          text:
+            "Program ini mengenalkan program belajar siswa, pembekalan budaya belajar secara kreatif dan mandiri, sosialisasi nilai-nilai akhlaq al karimah bagi siswa-siswi MI. Ahmad Yani",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/pendidikan-islam.png",
+          title: "Program Pendidikan Islam",
+          text:
+            "Program ini menumbuhkembangkan keislaman siswa, dipadu dalam pelajaran aqidah akhlaq, fiqih, alqur’an hadits dan bahasa arab yang diarahkan menuju tumbuh dan berkembangnya pribadi muslim siswa MI. Ahmad Yani yang sejak awal dilandasi dan memahami keislaman yang kaffah",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/tahsin1.png",
+          title: "Program Tahsin Al-Qur'an",
+          text:
+            "Belajar Al-Qur’an dididik oleh ustadz/ustadzah yang telah memiliki syahadah at-Tartil yang berjumlah 9, dengan harapan siswa MI Ahmad Yani yang dapat membaca al Qur’an dengan baik dan benar sesuai makharijul huruf dan kaidah ilmu tajwid",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/tahfidz.png",
+          title: "Program Tahfidz Al-Qur’an ",
+          text:
+            "Program ini dilaksanakan untuk mencetak para penghafal Al-Qur’an yang hamilul qur’an yakni menjaga hafalan alQur’an secara lafadz, makna dan pengamalan, program ini dinamakan EsTaQu (Ekstra Tahfidzul Qur’an)",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/kecakapan-hidup.png",
+          title: "Program Kecakapan Hidup",
+          text:
+            "Program ini bertujuan membentuk perilaku siswa MI. Ahmad Yani agar menjadi pribadi mandiri, cakap mengatasi problem, mampu mengembangkan bakat kreatifitasnya",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/ibadah-akhlak.png",
+          title: "Program Pembinaan Ibadah dan Akhlak",
+          text:
+            "Kesadaran Ibadah Wajib, Sholat Berjamaah, Kesadaran Ibadah Sunnah (Dhuha, Tahajud, Puasa Senin Kamis), Tadarus Al Quran, Infaq, Budaya 5 S (Senyum, Salam, Sapa, Sopan dan Santun), Student Welcomes, Jum’at Berkah, Semarak Hari Besar Islam dan Tafaquhfiddin",
+        },
+        {
+          isActive: false,
+          image: "/images/program-pendidikan/wisata-edukasi.png",
+          title: "Program Wisata Edukasi ",
+          text:
+            "Program ini sejak awal dilaksanakan MI. Ahmad Yani bertujuan menanamkan kemandirian dan pengetahuan siswa dengan pembelajaran di luar ruangan",
         },
       ],
     };
