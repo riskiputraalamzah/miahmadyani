@@ -3,7 +3,10 @@
     <div class="top__information">
       <v-container>
         <div class="left mx-md-0 mx-auto ">
-          <div class="item my-1">
+          <div
+            class="item my-1 cursor-pointer"
+            @click="href('https://goo.gl/maps/h6jUjiCuBXgrX2Mv7')"
+          >
             <v-icon>mdi-map-marker-outline</v-icon>
             <span
               >Desa Pagerngumbuk RT 06 RW 02 Wonoayu, Sidoarjo, Jawa Timur,
@@ -11,7 +14,10 @@
             >
           </div>
 
-          <div class="item my-1">
+          <div
+            class="item my-1 cursor-pointer"
+            @click="href('tel:085648092229')"
+          >
             <v-icon>mdi-phone</v-icon>
             <span>085648092229</span>
           </div>
@@ -19,7 +25,13 @@
         <div class="right   my-1">
           <v-tooltip bottom v-for="(sosmed, i) in sosmeds" :key="i">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn dark icon v-bind="attrs" v-on="on">
+              <v-btn
+                @click="href(sosmed.href)"
+                dark
+                icon
+                v-bind="attrs"
+                v-on="on"
+              >
                 <v-icon>{{ sosmed.icon }}</v-icon>
               </v-btn>
             </template>
@@ -101,7 +113,59 @@
       <!-- menu for  device large screen -->
       <v-expand-transition>
         <div v-show="$vuetify.breakpoint.width > 599">
-          <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
+          <v-list class="pa-0 mt-sm-5 mt-3 list-menu">
+            <v-list-item-group class="d-sm-flex d-block" color="transparent">
+              <v-slide-group
+                style="width:100%"
+                class="pa-0 ma-0"
+                center-active
+                mobile-breakpoint="0"
+              >
+                <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+                <v-slide-item v-for="(menu, i) in menus" :key="i">
+                  <v-list-item
+                    :to="menu.path"
+                    exact
+                    @click="activeMenu = 'child' in menu ? i : null"
+                    :class="[
+                      'child' in menu
+                        ? 'parent-menu-dropdown px-sm-3 px-0'
+                        : '',
+                      activeMenu === i ||
+                      activeParentRoute(
+                        'path' in menu ? menu.path.split('/')[1] : 'FALSE'
+                      )
+                        ? 'v-item--active v-list-item--active'
+                        : '',
+                    ]"
+                  >
+                    <v-list-item-content class="py-0">
+                      <Dropdown
+                        :text="menu.text"
+                        :parentKey="i"
+                        :countMenu="menus.length - 1"
+                        @activeParentMenu="activeMenu = $event"
+                        :menus="menu.child"
+                        v-if="'child' in menu"
+                      />
+                      <v-list-item-title
+                        v-else
+                        height="100%"
+                        :class="[
+                          'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0',
+                          i != menus.length - 1 ? 'pb-3' : 'pb-0',
+                        ]"
+                        v-text="menu.text"
+                      ></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-slide-item>
+                <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+              </v-slide-group>
+            </v-list-item-group>
+          </v-list>
+
+          <!-- <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
             <v-list-item-group class="d-sm-flex d-block" color="transparent">
               <v-list-item disabled class="d-sm-block d-none"></v-list-item>
 
@@ -143,7 +207,7 @@
               </v-list-item>
               <v-list-item disabled class="d-sm-block d-none"></v-list-item>
             </v-list-item-group>
-          </v-list>
+          </v-list> -->
         </div>
       </v-expand-transition>
 
@@ -232,6 +296,7 @@ export default {
           icon: "mdi-facebook",
           name: "Miahmadayani",
           color: "primary",
+          href: "https://www.facebook.com/profile.php?id=100008332621737",
         },
         {
           icon: "mdi-instagram",
@@ -337,8 +402,13 @@ export default {
               text: "SHOLAT JAMA'AH",
             },
             {
-              path: "/qiroah",
-              text: "QIRO'AH",
+              path: "/ekstra-qiroah",
+              text: "EKSTRA QIRO'AH",
+            },
+
+            {
+              path: "/sholawat-al-banjari",
+              text: "SHOLAWAT AL BANJARI",
             },
             {
               path: "/bela-diri",
@@ -384,6 +454,9 @@ export default {
   },
 
   methods: {
+    href(value) {
+      return value ? window.open(value, "_blank") : "";
+    },
     // closeMenu(boolean) {
     //   const width = this.$vuetify.breakpoint.width;
     //   if (!boolean && width < 599) {
@@ -405,3 +478,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+.parent-navbar .v-list-item-group {
+  overflow-x: auto;
+}
+.parent-navbar .v-list-item-group {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.parent-navbar .v-list-item-group::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+</style>

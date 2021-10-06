@@ -160,7 +160,7 @@ html body .v-application .font-logo {
   bottom: -0.75rem; */
   height: 5px;
   display: block;
-  margin: 1rem auto 0;
+  margin: 0.5rem auto 0;
   width: 75%;
   border-radius: 50%;
   background-image: var(--myGradient);
@@ -171,20 +171,6 @@ html body .v-application .font-logo {
   color: white;
   background-image: var(--myGradient);
 }
-
-/* .my-footer .data-footer {
-  background-color: var(--semiGreen);
-}
-.my-footer .copyright {
-  background-color: var(--green);
-} *.
-.
-/* section {
-  margin-top: 5rem;
-}
-section:first-child {
-  margin-top: 3rem !important;
-} */
 
 .v-breadcrumbs__item:not(.v-breadcrumbs__item--disabled) {
   color: black;
@@ -235,6 +221,16 @@ section:first-child {
 .my-section.program-pendidikan .title-row {
   color: var(--green);
 }
+
+html body #tree svg g line {
+  stroke: var(--green);
+  stroke-width: 3;
+}
+
+html body #tree svg g text {
+  fill: black;
+}
+
 @keyframes bounce {
   0%,
   100% {

@@ -21,19 +21,12 @@
           >
             <v-img
               @click.stop="lightbox(galeri.img)"
-              color="gray darken-3"
               aspect-ratio="1"
               class="rounded-lg cursor-pointer"
-              :lazy-src="galeri.img"
               :src="galeri.img"
             >
               <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  ></v-progress-circular>
-                </v-row>
+                <v-skeleton-loader type="image"></v-skeleton-loader>
               </template>
             </v-img>
           </v-col>

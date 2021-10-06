@@ -55,5 +55,11 @@ export default new Router({
       meta: { breadCrumb: "Struktur Organisasi" },
       component: () => import("./views/profil/StrukturOrganisasi.vue"),
     },
+    {
+      path: "/alumni",
+      name: "alumni",
+      meta: { breadCrumb: "Alumni" },
+      component: () => import("./views/informasi/Alumni.vue"),
+    },
   ],
 });

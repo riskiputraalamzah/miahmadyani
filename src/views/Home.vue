@@ -11,12 +11,11 @@
         >
           <v-carousel-item v-for="(slide, i) in sliders" :key="i">
             <v-img
-              height="100%"
               gradient="to top right, rgba(0,0,0,0.7),rgba(0,0,0,0.4),transparent"
               :lazy-src="slide.img"
               :src="slide.img"
-              class="grey lighten-2"
-            ></v-img>
+            >
+            </v-img>
             <div class="information white--text pl-md-5 pl-sm-3 pl-2 pr-2">
               <div class="text-md-h3 text-sm-h4 text-h6 font-weight-bold">
                 {{ slide.title }}
@@ -41,11 +40,11 @@
 
         <v-row justify="center" align="center" class="mt-10">
           <v-col cols="12" md="5" sm="10">
-            <v-img
-              class="rounded-lg"
-              lazy-src="/images/slider-4.jpg"
-              src="/images/slider-4.jpg"
-            ></v-img>
+            <v-img class="rounded-lg" src="/images/slider-4.jpg">
+              <template v-slot:placeholder>
+                <v-skeleton-loader type="image"></v-skeleton-loader>
+              </template>
+            </v-img>
           </v-col>
           <v-col cols="12" md="7" sm="10">
             <div class="text-justify">
@@ -90,12 +89,10 @@
           class="py-5"
         >
           <v-col cols="8" sm="6" md="4">
-            <v-img
-              class="rounded-lg "
-              contain
-              :src="program.image"
-              :lazy-src="program.image"
-            ></v-img>
+           
+              <v-img class="rounded-lg " contain :lazy-src="program.image" :src="program.image">
+                </v-img>
+            
           </v-col>
           <v-col cols="12" sm="6" md="8" class="text-center">
             <v-lazy
