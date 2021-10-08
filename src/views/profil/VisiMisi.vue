@@ -12,7 +12,7 @@
               </span>
             </div>
 
-            <div class="text-center  text-md-h4 text-h5">
+            <div class="text-center  text-md-h4 text-h5 font-weight-regular">
               <q>
                 TERWUJUDNYA GENERASI YANG BERPRESTASI, BERIMAN, DAN BERTAQWA
                 SERTA BERAKHLAKUL KARIMAH
@@ -34,7 +34,7 @@
               </span>
             </div>
 
-            <div class="  text-md-h4 text-h5">
+            <div class="  text-md-h4 text-h5 font-weight-regular">
               <ol type="1" class="list-misi">
                 <li>Melaksanakan pembelajaran PAKEMI</li>
                 <li>

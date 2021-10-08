@@ -133,6 +133,10 @@ html body .v-application .font-logo {
 .navbar .list-menu {
   width: 100%;
 }
+.hero__content {
+  max-width: 1785px;
+  margin: 0 auto;
+}
 .hero__content .v-image .v-responsive__content {
   position: relative;
 }
@@ -146,6 +150,7 @@ html body .v-application .font-logo {
 
 .hero__content .v-carousel__item .v-image {
   animation: scaleImage 12s linear infinite;
+  height: 100%;
 }
 
 .rule-headline {

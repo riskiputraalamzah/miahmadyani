@@ -2,11 +2,8 @@
   <div>
     <v-menu
       open-on-hover
-      bottom
-      right
       offset-y
-      rounded="lg"
-      transition="fab-transition"
+      transition="slide-y-transition"
       v-if="$vuetify.breakpoint.width > 599"
     >
       <template v-slot:activator="{ on, attrs }">
@@ -87,19 +84,10 @@ export default {
       activeMenu: null,
     };
   },
-  created() {
-    //  cek , apakah halaman saat ini sedang mengakses menu dropdown atau tidak
-    // bila iya maka emit class active ke parent menu
 
-    if (this.menus.map((e) => e.path).includes(this.$route.path)) {
-      this.selected();
-    }
-  },
   methods: {
     selected() {
-      // this.show = !this.show;
-      this.$emit("activeParentMenu", this.parentKey);
-      // this.$emit("closeSectionMenu");
+      this.$store.dispatch("setActiveMenu", this.parentKey);
     },
   },
 };

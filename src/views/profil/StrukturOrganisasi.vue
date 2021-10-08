@@ -7,8 +7,12 @@
             Struktur Organisasi
           </span>
         </div>
-
-        <panZoom class="overflow-hidden">
+        <v-img
+          :lazy-src="image"
+          :src="image"
+          v-if="$vuetify.breakpoint.smAndDown"
+        ></v-img>
+        <panZoom class="overflow-hidden" v-else>
           <v-img :lazy-src="image" :src="image"></v-img>
         </panZoom>
 
@@ -28,8 +32,12 @@
 export default {
   data() {
     return {
+      titlePage: "Struktur Organisasi",
       image: "/images/struktur-organisasi.png",
     };
+  },
+  created() {
+    this.$store.dispatch("setTitlePage", this.titlePage);
   },
 };
 </script>

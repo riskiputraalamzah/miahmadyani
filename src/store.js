@@ -1,11 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersist from "vuex-persist";
 
 Vue.use(Vuex);
 
+const vp = new VuexPersist({
+  storage: window.localStorage,
+  key: "my-app",
+});
+
 const store = new Vuex.Store({
   strict: true,
+
   state: {
+    activeMenu: null,
     titlePage: "MI. AHMAD YANI",
     titleOri: "MI. AHMAD YANI",
     dataArtikel: [
@@ -14,7 +22,7 @@ const store = new Vuex.Store({
           "https://ilfiwomen.org/wp-content/uploads/2020/10/artikel-pendidikan.jpg",
         category: ["pendidikan"],
         title: "Pendidikan Karakter Untuk Membangun Peradaban Bangsa",
-        time: "Hari ini 21.45",
+        time: "20/08/2021 21.45",
         author: "admin",
         views: 153,
       },
@@ -23,45 +31,45 @@ const store = new Vuex.Store({
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPJKKHFypNTfzQXE-dTFDMNEPxf9Ipwt21NQ&usqp=CAU",
         category: ["religi"],
         title: "Bulan Ramadhan yang Penuh Berkah",
-        time: "Kemarin 19.25",
+        time: "18/08/2021 19.25",
         author: "Yusuf S.pd",
         views: 200,
       },
     ],
-    dataBerita: [
-      {
-        image: "/images/galeri/2.jpg",
-        category: ["kunjungan"],
-        title: "Pembinaan Orientasi Kesehatan oleh Puskesmas",
-        time: "Hari ini 09.00",
-        author: "admin",
-        views: 1500,
-      },
-      {
-        image: "/images/galeri/15.jpg",
-        category: ["festival"],
-        title: "HSN beserta Banom di Kabupaten Sidoarjo ",
-        time: "2 hari yang lalu 09.00",
-        author: "admin",
-        views: 1163,
-      },
-      {
-        image: "/images/galeri/1.jpg",
-        category: ["kejuaraan"],
-        title: "JUARA TAHFIDZIL QUR’AN JUZ 30 LOMBA TINGKAT KABUPATEN DI CANDI",
-        time: "1 minggu yang lalu",
-        author: "admin",
-        views: 563,
-      },
-      {
-        image: "/images/galeri/40.jpg",
-        category: ["kejuaraan"],
-        title: "Lomba Pidato",
-        time: "1 bulan yang lalu",
-        author: "admin",
-        views: 754,
-      },
-    ],
+    // dataBerita: [
+    //   {
+    //     image: "/images/galeri/2.jpg",
+    //     category: ["kunjungan"],
+    //     title: "Pembinaan Orientasi Kesehatan oleh Puskesmas",
+    //     time: "Hari ini 09.00",
+    //     author: "admin",
+    //     views: 1500,
+    //   },
+    //   {
+    //     image: "/images/galeri/15.jpg",
+    //     category: ["festival"],
+    //     title: "HSN beserta Banom di Kabupaten Sidoarjo ",
+    //     time: "2 hari yang lalu 09.00",
+    //     author: "admin",
+    //     views: 1163,
+    //   },
+    //   {
+    //     image: "/images/galeri/1.jpg",
+    //     category: ["kejuaraan"],
+    //     title: "JUARA TAHFIDZIL QUR’AN JUZ 30 LOMBA TINGKAT KABUPATEN DI CANDI",
+    //     time: "1 minggu yang lalu",
+    //     author: "admin",
+    //     views: 563,
+    //   },
+    //   {
+    //     image: "/images/galeri/40.jpg",
+    //     category: ["kejuaraan"],
+    //     title: "Lomba Pidato",
+    //     time: "1 bulan yang lalu",
+    //     author: "admin",
+    //     views: 754,
+    //   },
+    // ],
     albums: [
       {
         img: "/images/galeri/1.jpg",
@@ -249,17 +257,23 @@ const store = new Vuex.Store({
     ],
   },
   mutations: {
-    commitTitlePage(state, value) {
-      state.titlePage = value
-        ? value + " &mdash; " + state.titleOri
+    commitTitlePage(state, payload) {
+      state.titlePage = payload
+        ? payload + " &mdash; " + state.titleOri
         : state.titleOri;
 
       document.querySelector("title").innerHTML = state.titlePage;
     },
+    commitActiveMenu(state, payload) {
+      state.activeMenu = payload;
+    },
   },
   actions: {
-    setTitlePage({ commit }, value) {
-      commit("commitTitlePage", value);
+    setTitlePage({ commit }, payload) {
+      commit("commitTitlePage", payload);
+    },
+    setActiveMenu({ commit }, payload) {
+      commit("commitActiveMenu", payload);
     },
   },
   getters: {
@@ -267,6 +281,8 @@ const store = new Vuex.Store({
     dataArtikel: (state) => state.dataArtikel,
     dataBerita: (state) => state.dataBerita,
     albums: (state) => state.albums,
+    activeMenu: (state) => state.activeMenu,
   },
+  plugins: [vp.plugin],
 });
 export default store;

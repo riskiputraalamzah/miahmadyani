@@ -20,7 +20,7 @@
             :key="i"
           >
             <v-img
-              @click.stop="lightbox(galeri.img)"
+              @click.stop="lightbox(galeri.img, galeri.text)"
               aspect-ratio="1"
               class="rounded-lg cursor-pointer"
               :src="galeri.img"
@@ -34,7 +34,7 @@
       </section>
     </v-container>
     <v-dialog
-      class="d-flex align-center"
+      class="d-flex py-10 align-center"
       style="z-index:9999999999"
       fullscreen
       v-model="dialog"
@@ -46,7 +46,11 @@
           :lazy-src="srcLightbox"
           @click="lightbox"
           :src="srcLightbox"
-        ></v-img>
+        >
+        </v-img>
+        <div class="placeholder-lightbox text-sm-h5 text-h6 pa-4">
+          {{ textLightBox }}
+        </div>
       </v-overlay>
     </v-dialog>
   </div>
@@ -58,6 +62,7 @@ export default {
     return {
       dialog: false,
       srcLightbox: null,
+      textLightBox: null,
       toggle_exclusive: null,
       titlePage: "Galeri",
       data: [],
@@ -73,15 +78,26 @@ export default {
     showGallery(date, author) {
       this.$router.push({ name: "showGallery", params: { date, author } });
     },
-    lightbox(src) {
+    lightbox(src, text) {
       this.dialog = !this.dialog;
       this.srcLightbox = src ?? null;
+      this.textLightBox = text ?? null;
     },
   },
 };
 </script>
 
 <style scoped>
+.placeholder-lightbox {
+  position: fixed;
+  bottom: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px black;
+  text-align: center;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
 .closeLightbox {
   position: fixed;
   top: 1rem;

@@ -6,7 +6,7 @@
           Alumni
         </span>
       </div>
-      <div class="text-md-h5 mb-5 text-h6 text-center">
+      <div class="text-md-h5  font-weight-regular mb-5 text-h6 text-center">
         Berikut beberapa dokumentasi alumni tahun ini.
       </div>
       <v-tabs color="green" v-model="tab">
@@ -38,12 +38,16 @@
       </section>
 
       <section class="py-10">
-        <div class="text-md-h5 mb-5 text-h6 text-center">
+        <div class="text-md-h5 font-weight-regular text-h6 text-center">
           Dokumentasi alumni tahun lalu.
         </div>
 
-        <v-slide-group mobile-breakpoint="0" center-active class="mt-10">
-          <v-slide-item v-for="(lampau, i) in alumniLampau" :key="i">
+        <v-slide-group mobile-breakpoint="0" center-active>
+          <v-slide-item
+            class="py-10"
+            v-for="(lampau, i) in alumniLampau"
+            :key="i"
+          >
             <v-hover v-slot="{ hover }">
               <v-card
                 :class="['ma-2 hover-card', hover ? 'on-hover-card' : '']"
@@ -52,7 +56,7 @@
                 light
                 :width="$vuetify.breakpoint.width > 599 ? '250' : '200'"
               >
-                <v-row class="overflow-hidden rounded-t-lg" no-gutters>
+                <v-row class="overflow-hidden rounded-lg" no-gutters>
                   <v-col
                     v-for="(img, indexImg) in lampau.images"
                     :key="indexImg"
@@ -85,11 +89,13 @@ export default {
   data() {
     return {
       tab: null,
+      titlePage: "Alumni",
       alumniLampau: [],
     };
   },
 
   created() {
+    this.$store.dispatch("setTitlePage", this.titlePage);
     const dataAlumniLampau = [
       {
         images: [

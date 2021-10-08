@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import VisiMisi from "./views/profil/VisiMisi.vue";
 
 Vue.use(Router);
 export default new Router({
@@ -30,7 +29,7 @@ export default new Router({
       path: "/visi-misi",
       name: "visiMisi",
       meta: { breadCrumb: "Visi Misi" },
-      component: VisiMisi,
+      component: () => import("./views/profil/VisiMisi.vue"),
     },
     {
       path: "/kontak",

@@ -2,12 +2,14 @@
   <div class="my-footer">
     <v-container class="py-0 pl-0">
       <div class="data-footer py-10">
-        <v-row
-          justify="center"
-          class="flex-md-row-reverse flex-row"
-          align="center"
-        >
-          <v-col cols="12" ord md="4" class="font-weight-bold">
+        <v-row justify="center" class="flex-md-row-reverse flex-row">
+          <v-col
+            align-self="center"
+            cols="12"
+            ord
+            md="4"
+            class="font-weight-bold"
+          >
             <div class="text-center my-2">ISLAMIC SUPERIOR SCHOOL</div>
             <div
               class="d-flex my-2 align-center text-center justify-center flex-sm-column flex-row"
@@ -25,33 +27,48 @@
 
             <div class="text-center my-2">TERAKREDITASI <q>A-UNGGUL</q></div>
           </v-col>
-          <v-col align-self="start" cols="12" order-md="last" md="4" sm="6">
+          <v-col cols="12" order-md="last" md="4" sm="6">
             <div class="text-md-h6 pl-4 text-heading font-poppins">
               Tentang Kami
             </div>
             <v-list color="transparent " flat dark>
               <v-list-item-group>
-                <v-list-item>
+                <v-list-item
+                  to="/visi-misi"
+                  @click="$store.dispatch('setActiveMenu', 1)"
+                >
                   <v-subheader class="pl-0">Visi dan Misi</v-subheader>
                 </v-list-item>
-                <v-list-item>
-                  <v-subheader class="pl-0">Informasi Sekolah</v-subheader>
+                <v-list-item
+                  to="/struktur-organisasi"
+                  @click="$store.dispatch('setActiveMenu', 1)"
+                >
+                  <v-subheader class="pl-0">Struktur Organisasi</v-subheader>
                 </v-list-item>
-                <v-list-item>
-                  <v-subheader class="pl-0">Artikel</v-subheader>
+                <v-list-item
+                  to="/pengumuman"
+                  @click="$store.dispatch('setActiveMenu', 2)"
+                >
+                  <v-subheader class="pl-0">Pengumuman</v-subheader>
                 </v-list-item>
-                <v-list-item>
-                  <v-subheader class="pl-0">Berita</v-subheader>
+                <v-list-item
+                  to="/liputan-event"
+                  @click="$store.dispatch('setActiveMenu', 2)"
+                >
+                  <v-subheader class="pl-0">Event</v-subheader>
                 </v-list-item>
-                <v-list-item>
-                  <v-subheader class="pl-0">Kontak</v-subheader>
+                <v-list-item
+                  to="/galeri"
+                  @click="$store.dispatch('setActiveMenu', null)"
+                >
+                  <v-subheader class="pl-0">Galeri</v-subheader>
                 </v-list-item>
               </v-list-item-group>
             </v-list>
           </v-col>
           <v-col cols="12" md="4" sm="6">
             <div class="text-md-h6 pl-4 text-heading font-poppins">
-              Artikel & Berita Terpopuler
+              Artikel Terpopuler
             </div>
             <v-list color="transparent " flat dark>
               <v-list-item-group>
@@ -91,11 +108,10 @@
 export default {
   computed: {
     dataTerpopuler: function() {
-      let { dataArtikel, dataBerita } = this.$store.getters;
-      dataArtikel = dataArtikel.filter((e) => e.views >= 200);
-      dataBerita = dataBerita.filter((e) => e.views >= 200);
+      let { dataArtikel } = this.$store.getters;
+      dataArtikel = dataArtikel.filter((e) => e.views >= 100);
 
-      return [...dataBerita, ...dataArtikel].sort((a, b) => b.views - a.views);
+      return [...dataArtikel].sort((a, b) => b.views - a.views);
     },
   },
 

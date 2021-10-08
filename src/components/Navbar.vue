@@ -126,7 +126,12 @@
                   <v-list-item
                     :to="menu.path"
                     exact
-                    @click="activeMenu = 'child' in menu ? i : null"
+                    @click="
+                      $store.dispatch(
+                        'setActiveMenu',
+                        'child' in menu ? i : null
+                      )
+                    "
                     :class="[
                       'child' in menu
                         ? 'parent-menu-dropdown px-sm-3 px-0'
@@ -144,7 +149,6 @@
                         :text="menu.text"
                         :parentKey="i"
                         :countMenu="menus.length - 1"
-                        @activeParentMenu="activeMenu = $event"
                         :menus="menu.child"
                         v-if="'child' in menu"
                       />
@@ -164,50 +168,6 @@
               </v-slide-group>
             </v-list-item-group>
           </v-list>
-
-          <!-- <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
-            <v-list-item-group class="d-sm-flex d-block" color="transparent">
-              <v-list-item disabled class="d-sm-block d-none"></v-list-item>
-
-              <v-list-item
-                v-for="(menu, i) in menus"
-                :key="i"
-                :to="menu.path"
-                exact
-                @click="activeMenu = 'child' in menu ? i : null"
-                :class="[
-                  'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
-                  activeMenu === i ||
-                  activeParentRoute(
-                    'path' in menu ? menu.path.split('/')[1] : 'FALSE'
-                  )
-                    ? 'v-item--active v-list-item--active'
-                    : '',
-                ]"
-              >
-                <v-list-item-content class="py-0">
-                  <Dropdown
-                    :text="menu.text"
-                    :parentKey="i"
-                    :countMenu="menus.length - 1"
-                    @activeParentMenu="activeMenu = $event"
-                    :menus="menu.child"
-                    v-if="'child' in menu"
-                  />
-                  <v-list-item-title
-                    v-else
-                    height="100%"
-                    :class="[
-                      'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0',
-                      i != menus.length - 1 ? 'pb-3' : 'pb-0',
-                    ]"
-                    v-text="menu.text"
-                  ></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item disabled class="d-sm-block d-none"></v-list-item>
-            </v-list-item-group>
-          </v-list> -->
         </div>
       </v-expand-transition>
 
@@ -237,47 +197,46 @@
           <v-btn color="success" class="mx-2" outlined large>daftar</v-btn>
         </div>
         <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">
-          <v-list-item-group class="d-sm-flex d-block" color="transparent">
-            <v-list-item disabled class="d-sm-block d-none"></v-list-item>
+          <v-list-item disabled class="d-sm-block d-none"></v-list-item>
 
-            <v-list-item
-              v-for="(menu, i) in menus"
-              :key="i"
-              :to="menu.path"
-              exact
-              @click="activeMenu = 'child' in menu ? i : null"
-              :class="[
-                'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
-                activeMenu === i ||
-                activeParentRoute(
-                  'path' in menu ? menu.path.split('/')[1] : 'FALSE'
-                )
-                  ? 'v-item--active v-list-item--active'
-                  : '',
-              ]"
-            >
-              <v-list-item-content class="py-0">
-                <Dropdown
-                  :text="menu.text"
-                  :parentKey="i"
-                  :countMenu="menus.length - 1"
-                  @activeParentMenu="activeMenu = $event"
-                  :menus="menu.child"
-                  v-if="'child' in menu"
-                />
-                <v-list-item-title
-                  v-else
-                  height="100%"
-                  :class="[
-                    'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0 pb-3',
-                    ,
-                  ]"
-                  v-text="menu.text"
-                ></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item disabled class="d-sm-block d-none"></v-list-item>
-          </v-list-item-group>
+          <v-list-item
+            v-for="(menu, i) in menus"
+            :key="i"
+            :to="menu.path"
+            exact
+            @click="
+              'child' in menu ? '' : $store.dispatch('setActiveMenu', null)
+            "
+            :class="[
+              'child' in menu ? 'parent-menu-dropdown px-sm-3 px-0' : '',
+              activeMenu === i ||
+              activeParentRoute(
+                'path' in menu ? menu.path.split('/')[1] : 'FALSE'
+              )
+                ? 'v-item--active v-list-item--active'
+                : '',
+            ]"
+          >
+            <v-list-item-content class="py-0">
+              <Dropdown
+                :text="menu.text"
+                :parentKey="i"
+                :countMenu="menus.length - 1"
+                :menus="menu.child"
+                v-if="'child' in menu"
+              />
+              <v-list-item-title
+                v-else
+                height="100%"
+                :class="[
+                  'text-center d-flex justify-sm-center justify-start align-center pt-3 pb-sm-0 pb-3',
+                  ,
+                ]"
+                v-text="menu.text"
+              ></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item disabled class="d-sm-block d-none"></v-list-item>
         </v-list>
       </v-navigation-drawer>
     </div>
@@ -290,7 +249,7 @@ export default {
     return {
       keyword: null,
       showMenu: false,
-      activeMenu: null,
+      // activeMenu: null,
       sosmeds: [
         {
           icon: "mdi-facebook",
@@ -452,21 +411,21 @@ export default {
   components: {
     Dropdown,
   },
+  computed: {
+    activeMenu: function() {
+      return this.$store.getters.activeMenu;
+    },
+  },
 
   methods: {
     href(value) {
       return value ? window.open(value, "_blank") : "";
     },
-    // closeMenu(boolean) {
-    //   const width = this.$vuetify.breakpoint.width;
-    //   if (!boolean && width < 599) {
-    //     this.showMenu = !this.showMenu;
-    //   }
-    // },
+
     activeParentRoute(value) {
-      if (this.$route.path === "/") {
-        this.activeMenu = null;
-      }
+      // if (this.$route.path === "/") {
+      //   this.$store.dispatch("setActiveMenu", null);
+      // }
       return this.$route.path.split("/")[1] === value;
     },
     search() {
@@ -478,15 +437,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.parent-navbar .v-list-item-group {
-  overflow-x: auto;
-}
-.parent-navbar .v-list-item-group {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-.parent-navbar .v-list-item-group::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-</style>
