@@ -34,7 +34,7 @@
 
         <v-row justify="center" align="center" class="mt-10">
           <v-col cols="12" md="5" sm="10">
-            <v-img class="rounded-lg" src="/images/slider-4.jpg">
+            <v-img class="rounded-lg" src="/images/sambutan-kepsek.jpeg">
               <template v-slot:placeholder>
                 <v-skeleton-loader type="image"></v-skeleton-loader>
               </template>
@@ -429,6 +429,7 @@ export default {
 
     this.sliders = dataSlider;
   },
+
   methods: {
     cutString(list, key, max) {
       return list.map((item) => {

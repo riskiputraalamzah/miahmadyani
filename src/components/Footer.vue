@@ -33,34 +33,19 @@
             </div>
             <v-list color="transparent " flat dark>
               <v-list-item-group>
-                <v-list-item
-                  to="/visi-misi"
-                  @click="$store.dispatch('setActiveMenu', 1)"
-                >
+                <v-list-item to="/visi-misi" @click="dispatch(1)">
                   <v-subheader class="pl-0">Visi dan Misi</v-subheader>
                 </v-list-item>
-                <v-list-item
-                  to="/struktur-organisasi"
-                  @click="$store.dispatch('setActiveMenu', 1)"
-                >
+                <v-list-item to="/struktur-organisasi" @click="dispatch(1)">
                   <v-subheader class="pl-0">Struktur Organisasi</v-subheader>
                 </v-list-item>
-                <v-list-item
-                  to="/pengumuman"
-                  @click="$store.dispatch('setActiveMenu', 2)"
-                >
+                <v-list-item to="/pengumuman" @click="dispatch(2)">
                   <v-subheader class="pl-0">Pengumuman</v-subheader>
                 </v-list-item>
-                <v-list-item
-                  to="/liputan-event"
-                  @click="$store.dispatch('setActiveMenu', 2)"
-                >
+                <v-list-item to="/liputan-event" @click="dispatch(2)">
                   <v-subheader class="pl-0">Event</v-subheader>
                 </v-list-item>
-                <v-list-item
-                  to="/galeri"
-                  @click="$store.dispatch('setActiveMenu', null)"
-                >
+                <v-list-item to="/galeri" @click="dispatch(null)">
                   <v-subheader class="pl-0">Galeri</v-subheader>
                 </v-list-item>
               </v-list-item-group>
@@ -120,6 +105,10 @@ export default {
       const created = 2021;
       const now = new Date().getFullYear();
       return now > created ? created + " - " + now : now;
+    },
+    dispatch(value) {
+      this.$store.dispatch("setActiveMenu", value);
+      this.$vuetify.goTo(0, 0);
     },
   },
 };

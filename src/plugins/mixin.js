@@ -21,6 +21,9 @@ const mixin = Vue.mixin({
     numberWithCommas(value) {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+    isMounted(value) {
+      this.$store.dispatch("setActiveMenu", value);
+    },
   },
 });
 export default mixin;

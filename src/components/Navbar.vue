@@ -175,7 +175,7 @@
 
       <v-navigation-drawer
         v-show="(showMenu = $vuetify.breakpoint.width > 599 ? false : showMenu)"
-        style="width:70vw;"
+        style="width:80vw;"
         v-model="showMenu"
         app
         temporary

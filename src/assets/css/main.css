@@ -107,24 +107,6 @@ html body .v-application .font-logo {
   padding: 0;
 }
 
-/* .parent-navbar .v-list-item:not(.list-dropdown) {
-  transition: background 0.2s linear;
-  background-color: white !important;
-}
-.parent-navbar .v-list-item:not(.list-dropdown).v-list-item--active, */
-/* .parent-navbar .v-list-item:not(.list-dropdown):hover, */
-/* .parent-navbar .v-list-item:not(.list-dropdown)::before {
-  color: white !important;
-  opacity: 1;
-  background-color: transparent !important;
-}
-
-.v-list-group .v-list-group__header.v-list-item {
-  color: white !important;
-  background-color: transparent !important;
-  padding: 0;
-} */
-
 .parent-list-menu {
   transition: all 0.5s ease;
   height: 100%;

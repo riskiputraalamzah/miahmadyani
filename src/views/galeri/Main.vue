@@ -74,6 +74,7 @@ export default {
     this.$store.dispatch("setTitlePage", this.titlePage);
     this.data = this.$store.getters.albums;
   },
+
   methods: {
     showGallery(date, author) {
       this.$router.push({ name: "showGallery", params: { date, author } });

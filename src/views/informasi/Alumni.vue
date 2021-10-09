@@ -160,5 +160,8 @@ export default {
     ];
     this.alumniLampau = dataAlumniLampau;
   },
+  mounted() {
+    this.isMounted(2);
+  },
 };
 </script>

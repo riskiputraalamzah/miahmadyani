@@ -39,5 +39,8 @@ export default {
   created() {
     this.$store.dispatch("setTitlePage", this.titlePage);
   },
+  mounted() {
+    this.isMounted(1);
+  },
 };
 </script>
