@@ -64,13 +64,13 @@
     <section class="my-section program-pendidikan py-10">
       <v-container>
         <div
-          class="text-md-h3 mb-10  text-sm-h4 text-h5 font-weight-bold text-center"
+          class="text-md-h3 mb-10 text-sm-h4 text-h5  font-weight-bold text-center"
         >
           <span class="font-poppins rule-headline">
             Program Pendidikan
           </span>
         </div>
-        <div class="text-center  text-h6 ">
+        <div class="text-center  text-h6 font-weight-regular">
           Berikut beberapa program pendidikan sekolah kita
         </div>
 
@@ -196,13 +196,13 @@
     <section class="my-section py-10">
       <v-container>
         <div
-          class="text-md-h3 mb-10  text-sm-h4 text-h5 font-weight-bold text-center"
+          class="text-md-h3 mb-10  text-sm-h4 text-h5  font-weight-bold text-center"
         >
           <span class="font-poppins rule-headline">
             Kejuaraan
           </span>
         </div>
-        <div class="text-center  text-h6 mb-5">
+        <div class="text-center  text-h6 mb-5 font-weight-regular">
           MI. Ahmad Yani berusaha untuk memadukan potensi masing-masing anak,
           serta berusaha menghasilkan keunggulan pribadi yang bisa membanggakan
           dan dapat digunakan untuk meraih sukses tertinggi

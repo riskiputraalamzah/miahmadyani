@@ -3,7 +3,7 @@
     <v-container>
       <section class="py-10">
         <div
-          class="text-md-h3 mb-10 text-sm-h3 text-h4 font-weight-bold text-center"
+          class="text-md-h3 mb-10 text-sm-h4 text-h5 font-weight-bold text-center"
         >
           <span class="font-poppins rule-headline">
             Artikel

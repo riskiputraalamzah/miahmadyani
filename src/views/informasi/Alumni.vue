@@ -1,12 +1,16 @@
 <template>
   <div>
     <v-container>
-      <div class="mb-10 text-md-h3 text-h4 font-weight-bold text-center ">
+      <div
+        class="mb-10 text-md-h3 text-sm-h4 text-h5 font-weight-bold text-center "
+      >
         <span class="font-poppins rule-headline">
           Alumni
         </span>
       </div>
-      <div class="text-md-h5  font-weight-regular mb-5 text-h6 text-center">
+      <div
+        class="text-md-h4 text-sm-h5 text-h6  font-weight-regular mb-5 text-center"
+      >
         Berikut beberapa dokumentasi alumni tahun ini.
       </div>
       <v-tabs color="green" v-model="tab">
@@ -38,7 +42,9 @@
       </section>
 
       <section class="py-10">
-        <div class="text-md-h5 font-weight-regular text-h6 text-center">
+        <div
+          class="text-md-h4 text-sm-h5 text-h6  font-weight-regular  text-center"
+        >
           Dokumentasi alumni tahun lalu.
         </div>
 

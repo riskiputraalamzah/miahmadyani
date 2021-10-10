@@ -5,14 +5,16 @@
         <v-row justify="center">
           <v-col cols="12" md="10">
             <div
-              class="mb-10  text-md-h3 text-h4 font-weight-bold text-center font-italic"
+              class="mb-10  text-md-h3 text-sm-h4 text-h5 font-weight-bold text-center "
             >
               <span class="font-poppins rule-headline">
                 Visi
               </span>
             </div>
 
-            <div class="text-center  text-md-h4 text-h5 font-weight-regular">
+            <div
+              class="text-center  text-md-h4 text-sm-h5 text-h6 font-weight-regular"
+            >
               <q>
                 TERWUJUDNYA GENERASI YANG BERPRESTASI, BERIMAN, DAN BERTAQWA
                 SERTA BERAKHLAKUL KARIMAH
@@ -27,14 +29,14 @@
         <v-row justify="center">
           <v-col cols="12" md="10">
             <div
-              class="mb-10  text-md-h3 text-h4 font-weight-bold text-center font-italic"
+              class="mb-10  text-md-h3 text-sm-h4 text-h5 font-weight-bold text-center "
             >
               <span class="font-poppins rule-headline">
                 Misi
               </span>
             </div>
 
-            <div class="  text-md-h4 text-h5 font-weight-regular">
+            <div class="  text-md-h4 text-sm-h5 text-h6 font-weight-regular">
               <ol type="1" class="list-misi">
                 <li>Melaksanakan pembelajaran PAKEMI</li>
                 <li>

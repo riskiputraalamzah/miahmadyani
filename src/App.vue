@@ -14,14 +14,12 @@
     <Navbar />
 
     <v-main>
-      <v-fade-transition>
-        <div>
-          <v-container v-show="$route.name != 'home'">
-            <Breadcrumbs :items="breadCrumbs" />
-          </v-container>
-          <router-view></router-view>
-        </div>
-      </v-fade-transition>
+      <v-container v-show="$route.name != 'home'">
+        <Breadcrumbs :items="breadCrumbs" />
+      </v-container>
+      <v-scale-transition>
+        <router-view></router-view>
+      </v-scale-transition>
     </v-main>
     <Footer />
   </v-app>

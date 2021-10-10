@@ -258,6 +258,12 @@ export default {
           href: "https://www.facebook.com/profile.php?id=100008332621737",
         },
         {
+          icon: "mdi-whatsapp",
+          name: "Whatsapp",
+          color: "primary",
+          href: "https://api.whatsapp.com/send?phone=6285648092229",
+        },
+        {
           icon: "mdi-instagram",
           color: "red",
           name: "miahmadayani",
@@ -411,6 +417,7 @@ export default {
   components: {
     Dropdown,
   },
+
   computed: {
     activeMenu: function() {
       return this.$store.getters.activeMenu;

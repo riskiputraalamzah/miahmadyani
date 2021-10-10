@@ -209,6 +209,10 @@ html body .v-application .font-logo {
   color: var(--green);
 }
 
+.my-title {
+  font-size: calc(2vw + 1rem);
+}
+
 html body #tree svg g line {
   stroke: var(--green);
   stroke-width: 3;
