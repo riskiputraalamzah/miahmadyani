@@ -43,11 +43,16 @@
                   </v-chip>
                 </v-img>
 
-                <v-card-title
-                  v-text="info.title"
-                  class="hover-underline cursor-pointer"
-                  style="line-height:1.5rem;padding:1rem 0.5rem;"
-                ></v-card-title>
+                <router-link
+                  :to="{ name: 'showArtikel', params: { slug: info.slug } }"
+                  class="black--text text-decoration-none"
+                >
+                  <v-card-title
+                    v-text="info.title"
+                    class="hover-underline cursor-pointer"
+                    style="line-height:1.5rem;padding:1rem 0.5rem;"
+                  ></v-card-title>
+                </router-link>
 
                 <v-divider class="mx-2"></v-divider>
                 <div

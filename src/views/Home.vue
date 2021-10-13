@@ -42,18 +42,18 @@
           </v-col>
           <v-col cols="12" md="7" sm="10">
             <div class="text-justify text-subtitle font-weight-regular">
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa,
-                et!
+              <p class="font-weight-bold ">
+                Bagian ini nanti akan berisi kata-kata sambutan oleh Kepala
+                Sekolah
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
-                eum fugiat molestias labore voluptate praesentium necessitatibus
-                iste? Similique iure hic sint dolorum, ratione ab quisquam
-                incidunt alias ipsum doloremque cumque quia. Tempore animi
-                dignissimos delectus consequatur mollitia natus, voluptatum
-                explicabo maxime totam aliquam recusandae commodi in ducimus
-                ipsa aliquid ipsum!
+                Sambutan bisa berupa kata kata sapaan kepada seseorang yang
+                telah berkunjung diweb kita (MI Ahmad Yani) .
+              </p>
+              <p>
+                Web MI Ahmad Yani merupakan sebuah web profile sekolah yang
+                menampilakan informasi serta kegiatan terkini yang sedang ada,
+                agar dapat dilihat oleh banyak orang.
               </p>
             </div>
           </v-col>
@@ -166,11 +166,16 @@
                   >
                   </v-chip>
                 </v-img>
-                <v-card-title
-                  v-text="info.title"
-                  class="hover-underline cursor-pointer"
-                  style="line-height:1.5rem;padding:1rem 0.5rem;"
-                ></v-card-title>
+                <router-link
+                  :to="{ name: 'showArtikel', params: { slug: info.slug } }"
+                  class="black--text text-decoration-none"
+                >
+                  <v-card-title
+                    v-text="info.title"
+                    class="hover-underline cursor-pointer"
+                    style="line-height:1.5rem;padding:1rem 0.5rem;"
+                  ></v-card-title>
+                </router-link>
                 <v-divider class="mx-2"></v-divider>
                 <div class=" text-subtitle-2 px-1  p-card ">
                   <div class="d-flex my-1  align-center">

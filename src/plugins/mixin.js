@@ -22,7 +22,7 @@ const mixin = Vue.mixin({
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
     isMounted(value) {
-      this.$store.dispatch("setActiveMenu", value);
+      this.$store.dispatch("setActiveMenu", value ?? null);
     },
   },
 });

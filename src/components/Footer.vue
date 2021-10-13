@@ -58,6 +58,8 @@
             <v-list color="transparent " flat dark>
               <v-list-item-group>
                 <v-list-item
+                  @click="$vuetify.goTo(0, 0)"
+                  :to="{ name: 'showArtikel', params: { slug: data.slug } }"
                   class="d-flex align-center py-2"
                   v-for="(data, i) in dataTerpopuler"
                   :key="i"
@@ -68,9 +70,13 @@
                   <v-subheader
                     class="pl-0 flex-column align-start overflow-hidden"
                   >
-                    <div class="text-truncate d-block mb-1" style="width:100%">
+                    <div
+                      class="text-truncate hover-underline d-block mb-1"
+                      style="width:100%"
+                    >
                       {{ data.title }}
                     </div>
+
                     <div>
                       <v-icon small>mdi-eye</v-icon>
                       {{ compactNumber(data.views) }}

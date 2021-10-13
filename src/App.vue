@@ -17,9 +17,9 @@
       <v-container v-show="$route.name != 'home'">
         <Breadcrumbs :items="breadCrumbs" />
       </v-container>
-      <v-scale-transition>
+      <v-fade-transition>
         <router-view></router-view>
-      </v-scale-transition>
+      </v-fade-transition>
     </v-main>
     <Footer />
   </v-app>
@@ -52,6 +52,7 @@ export default {
       // needed to handle the intermediary entries for nested vue routes
       let breadcrumb = "";
       let lastIndexFound = 0;
+
       for (let i = 0; i < pathArray.length; ++i) {
         breadcrumb = `${breadcrumb}${"/"}${pathArray[i]}`;
         if (
@@ -59,13 +60,21 @@ export default {
           Object.hasOwnProperty.call(this.$route.matched[i], "meta") &&
           Object.hasOwnProperty.call(this.$route.matched[i].meta, "breadCrumb")
         ) {
+          let text = this.$route.matched[i].meta.breadCrumb || pathArray[i];
+          text = text
+            .split("-")
+            .join(" ")
+            .replace(/\b\w/g, function(l) {
+              return l.toUpperCase();
+            });
+
           breadCrumbs.push({
             to:
               i !== 0 && pathArray[i - (i - lastIndexFound)]
                 ? "/" + pathArray[i - (i - lastIndexFound)] + breadcrumb
                 : breadcrumb,
             disabled: i + 1 === pathArray.length,
-            text: this.$route.matched[i].meta.breadCrumb || pathArray[i],
+            text,
           });
           lastIndexFound = i;
           breadcrumb = "";

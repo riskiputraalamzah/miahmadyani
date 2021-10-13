@@ -38,9 +38,25 @@ export default new Router({
     },
     {
       path: "/artikel",
-      name: "artikel",
       meta: { breadCrumb: "Artikel" },
-      component: () => import("./views/artikel/Main.vue"),
+      component: () => import("./views/artikel/Parent.vue"),
+
+      children: [
+        {
+          path: "",
+          name: "artikel",
+          component: () => import("./views/artikel/Main.vue"),
+        },
+        {
+          path: ":slug",
+          name: "showArtikel",
+          props: true,
+          meta: {
+            breadCrumb: this,
+          },
+          component: () => import("./views/artikel/Show.vue"),
+        },
+      ],
     },
 
     {
