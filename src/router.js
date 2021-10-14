@@ -76,5 +76,11 @@ export default new Router({
       meta: { breadCrumb: "Alumni" },
       component: () => import("./views/informasi/Alumni.vue"),
     },
+    {
+      path: "/liputan-event",
+      name: "liputanEvent",
+      meta: { breadCrumb: "Liputan Event" },
+      component: () => import("./views/informasi/LiputanEvent.vue"),
+    },
   ],
 });

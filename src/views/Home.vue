@@ -52,8 +52,8 @@
               </p>
               <p>
                 Web MI Ahmad Yani merupakan sebuah web profile sekolah yang
-                menampilakan informasi serta kegiatan terkini yang sedang ada,
-                agar dapat dilihat oleh banyak orang.
+                menampilkan informasi serta kegiatan terkini, agar dapat dilihat
+                oleh banyak orang.
               </p>
             </div>
           </v-col>

@@ -43,7 +43,7 @@
                   <v-subheader class="pl-0">Pengumuman</v-subheader>
                 </v-list-item>
                 <v-list-item to="/liputan-event" @click="dispatch(2)">
-                  <v-subheader class="pl-0">Event</v-subheader>
+                  <v-subheader class="pl-0">Liputan Event</v-subheader>
                 </v-list-item>
                 <v-list-item to="/galeri" @click="dispatch(null)">
                   <v-subheader class="pl-0">Galeri</v-subheader>

@@ -90,6 +90,7 @@ export default {
   },
   mounted() {
     this.onScroll();
+    this.isMounted();
   },
   methods: {
     onScroll() {
