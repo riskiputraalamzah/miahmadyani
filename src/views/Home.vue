@@ -2,8 +2,12 @@
   <div class="home-content">
     <hero-content>
       <template>
-        <v-carousel cycle interval="10000" height="50vmax" hide-delimiters>
-          <v-carousel-item v-for="(slide, i) in sliders" :key="i">
+        <v-carousel interval="10000" cycle height="50vmax" hide-delimiters>
+          <v-carousel-item
+            active-class="active"
+            v-for="(slide, i) in sliders"
+            :key="i"
+          >
             <v-img
               gradient="to top right, rgba(0,0,0,0.6),rgba(0,0,0,0.3),transparent"
               :lazy-src="slide.img"
@@ -11,10 +15,14 @@
             >
             </v-img>
             <div class="information white--text pl-md-5 pl-sm-3 pl-2 pr-2">
-              <div class="text-md-h3 text-sm-h4 text-h6 font-weight-bold">
+              <div
+                class="text-md-h3 info-title text-sm-h4 text-h6 font-weight-bold"
+              >
                 {{ slide.title }}
               </div>
-              <div class="text-md-h5 text-sm-subtitle-1 text-subtitle-2">
+              <div
+                class="text-md-h5 info-subtitle text-sm-subtitle-1 text-subtitle-2"
+              >
                 {{ slide.subtitle }}
               </div>
             </div>
@@ -32,9 +40,14 @@
           </span>
         </div>
 
-        <v-row justify="center" align="center" class="mt-10">
+        <v-row justify="center" class="mt-10">
           <v-col cols="12" md="5" sm="10">
-            <v-img class="rounded-lg" src="/images/sambutan-kepsek.jpeg">
+            <v-img
+              class="rounded-xl elevation-10 img-sambutan"
+              min-height="100%"
+              aspect-ratio="1"
+              src="/images/sambutan-kepsek.jpeg"
+            >
               <template v-slot:placeholder>
                 <v-skeleton-loader type="image"></v-skeleton-loader>
               </template>
@@ -42,18 +55,38 @@
           </v-col>
           <v-col cols="12" md="7" sm="10">
             <div class="text-justify text-subtitle font-weight-regular">
-              <p class="font-weight-bold ">
-                Bagian ini nanti akan berisi kata-kata sambutan oleh Kepala
-                Sekolah
+              <p>Assalamu’alaikum wr.wb.</p>
+              <p>
+                Puji syukur kepada Alloh SWT, Tuhan Yang Maha Esa yang telah
+                memberikan rahmat dan anugerahNya sehingga website MI. Ahmad
+                Yani Pagerngumbuk Wonoayu ini dapat terbit. Salah satu tujuan
+                dari website ini adalah untuk menjawab akan setiap kebutuhan
+                informasi dengan memanfaatkan sarana teknologi informasi yang
+                ada. Kami sadar sepenuhnya dalam rangka memajukan pendidikan di
+                era berkembangnya Teknologi Informasi yang begitu pesat, sangat
+                diperlukan berbagai sarana prasarana yang kondusif, kebutuhan
+                berbagai informasi siswa, guru, orangtua maupun masyarakat,
+                sehingga kami berusaha mewujudkan hal tersebut semaksimal
+                mungkin. Semoga dengan adanya website ini dapat membantu dan
+                bermanfaat, terutama informasi yang berhubungan dengan
+                pendidikan, ilmu pengetahuan dan informasi seputar MI. Ahmad
+                Yani Pagerngumbuk Wonoayu.
               </p>
               <p>
-                Sambutan bisa berupa kata kata sapaan kepada seseorang yang
-                telah berkunjung diweb kita (MI Ahmad Yani) .
+                Besar harapan kami, sarana ini dapat memberi manfaat bagi semua
+                pihak yang ada dilingkup pendidikan dan pemerhati pendidikan
+                secara khusus bagi MI. Ahmad Yani Pagerngumbuk Wonoayu.
               </p>
               <p>
-                Web MI Ahmad Yani merupakan sebuah web profile sekolah yang
-                menampilkan informasi serta kegiatan terkini, agar dapat dilihat
-                oleh banyak orang.
+                Akhirnya kami mengharapkan masukan dari berbagai pihak untuk
+                website ini agar kami terus belajar dan meng-update diri,
+                sehingga tampilan, isi dan mutu website akan terus berkembang
+                dan lebih baik nantinya. Terima kasih atas kerjasamanya, maju
+                terus untuk mencapai MI. Ahmad Yani Pagerngumbuk Wonoayu yang
+                lebih baik lagi.
+              </p>
+              <p>
+                Wassalamu’alaikum wr.wb.
               </p>
             </div>
           </v-col>
@@ -218,7 +251,7 @@
             <v-carousel
               cycle
               height="auto"
-              class="rounded-lg overflow-hidden"
+              class="rounded-xl elevation-10 overflow-hidden"
               interval="5000"
               :show-arrows="false"
               hide-delimiters
@@ -268,7 +301,7 @@
             <v-carousel
               cycle
               height="auto"
-              class="rounded-lg overflow-hidden"
+              class="rounded-xl elevation-10 overflow-hidden"
               interval="6000"
               :show-arrows="false"
               hide-delimiters
@@ -461,6 +494,48 @@ export default {
 
 section.my-section:nth-child(odd) {
   background-color: #fafafa;
+}
+
+.hero__content .v-window-item.active .information {
+  animation: information 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.hero__content .v-window-item.active .info-title {
+  animation: infoTitle 1.5s linear;
+}
+.hero__content .v-window-item.active .info-subtitle {
+  animation: infoSubTitle 1.5s linear;
+}
+@keyframes information {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes infoTitle {
+  from {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes infoSubTitle {
+  from {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 /* .hover-card {
   transition: 0.5s ease;

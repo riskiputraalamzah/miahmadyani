@@ -9,16 +9,16 @@
               v-text="artikel.title"
             ></div>
             <div class="mb-4">
-              <div class="d-flex my-1  align-center">
-                <v-icon class="mr-1">mdi-calendar-clock</v-icon>
+              <div class="d-flex my-1 justify-space-between  align-center">
+                <span class="text-muted font-italic">Published at</span>
                 <span>{{ artikel.time }}</span>
               </div>
-              <div class="d-flex my-1  align-center">
-                <v-icon class="mr-1">mdi-eye</v-icon>
+              <div class="d-flex my-1 justify-space-between  align-center">
+                <span class="text-muted font-italic">Views</span>
                 <span>{{ numberWithCommas(artikel.views) }}</span>
               </div>
-              <div class="d-flex my-1  align-center">
-                <v-icon class="mr-1">mdi-account</v-icon>
+              <div class="d-flex my-1 justify-space-between  align-center">
+                <span class="text-muted font-italic">Created by</span>
                 <span>{{ artikel.author }}</span>
               </div>
             </div>
@@ -35,7 +35,7 @@
           <v-col cols="12" sm="10" md="4" xl="5">
             <div class="konten_artikel_terkait">
               <div class="item mb-5">
-                <div class="mb-3  ml-4 text-h6  ">
+                <div class="mb-3   text-h6  ">
                   <span class="font-poppins rule-headline">
                     Artikel Terkait
                   </span>
@@ -46,7 +46,8 @@
                     <v-list-item
                       :to="{ name: 'showArtikel', params: { slug: data.slug } }"
                       exact
-                      class="d-flex align-center py-2"
+                      @click="$vuetify.goTo(0, 0)"
+                      class="d-flex px-0 align-center py-2"
                       v-for="(data, i) in artikelTerkait"
                       :key="i"
                     >
@@ -73,7 +74,7 @@
                 </v-list>
               </div>
               <div class="item mb-5">
-                <div class="mb-3  ml-4 text-h6  ">
+                <div class="mb-3 text-h6  ">
                   <span class="font-poppins rule-headline">
                     Kategori
                   </span>
@@ -82,7 +83,7 @@
                 <v-list color="transparent " flat light>
                   <v-list-item-group>
                     <v-list-item
-                      class="py-1"
+                      class="py-1 px-0"
                       v-for="(category, i) in categories"
                       :key="i"
                     >
