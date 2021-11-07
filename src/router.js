@@ -82,5 +82,11 @@ export default new Router({
       meta: { breadCrumb: "Liputan Event" },
       component: () => import("./views/informasi/LiputanEvent.vue"),
     },
+    {
+      path: "/kelola-konten",
+      name: "kelolaKonten",
+
+      component: () => import("./views/admin/menu/Dashboard.vue"),
+    },
   ],
 });

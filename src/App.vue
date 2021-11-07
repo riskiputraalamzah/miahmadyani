@@ -1,5 +1,8 @@
 <template>
-  <v-app>
+  <v-app v-if="isAdmin">
+    <Admin />
+  </v-app>
+  <v-app v-else>
     <v-btn
       @click="$vuetify.goTo(0, 0)"
       :class="[
@@ -11,7 +14,7 @@
     >
       <v-icon>mdi-chevron-up</v-icon>
     </v-btn>
-    <Navbar />
+    <Navbar @showModalLogin="modalLogin = $event" />
 
     <v-main>
       <v-container v-show="$route.name != 'home'">
@@ -22,6 +25,55 @@
       </v-fade-transition>
     </v-main>
     <Footer />
+
+    <v-dialog max-width="400px" v-model="modalLogin" persistent>
+      <v-card :loading="loading">
+        <template slot="progress">
+          <v-progress-linear
+            color="green"
+            height="10"
+            indeterminate
+          ></v-progress-linear>
+        </template>
+        <v-container class="d-flex flex-column align-center">
+          <v-img
+            max-width="80px"
+            max-height="80px"
+            src="/logo-mi.png"
+            lazy-src="/logo-mi.png"
+          ></v-img>
+          <v-card-title class="text-h4 ">
+            Login
+          </v-card-title>
+
+          <v-form style="width: 100%;">
+            <v-text-field
+              color="green"
+              outlined
+              label="Username"
+            ></v-text-field>
+            <v-text-field
+              color="green"
+              :type="showPw ? 'text' : 'password'"
+              outlined
+              :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="showPw = !showPw"
+              label="Password"
+            ></v-text-field>
+          </v-form>
+        </v-container>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="red" text @click="modalLogin = false">
+            Close
+          </v-btn>
+          <v-btn color="primary" :disabled="submit" text @click="submitLogin">
+            Submit
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -30,21 +82,30 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 
+import Admin from "@/views/admin/App.vue";
 export default {
   name: "App",
 
   data: () => ({
     offsetTop: 0,
     showMenu: false,
+    showPw: false,
     selectedItem: 0,
+    submit: false,
+    loading: false,
+    modalLogin: false,
   }),
 
   components: {
     Navbar,
     Footer,
     Breadcrumbs,
+    Admin,
   },
   computed: {
+    isAdmin() {
+      return this.$store.getters.isAdmin;
+    },
     breadCrumbs() {
       let pathArray = this.$route.path.split("/");
       pathArray.shift();
@@ -90,6 +151,7 @@ export default {
   },
   mounted() {
     this.onScroll();
+    // this.$store.dispatch("setIsAdmin", false);
     this.isMounted();
   },
   methods: {
@@ -97,6 +159,18 @@ export default {
       window.onscroll = () => {
         this.offsetTop = window.pageYOffset;
       };
+    },
+    submitLogin() {
+      this.submit = true;
+      this.loading = true;
+
+      setTimeout(() => {
+        this.$store.dispatch("setIsAdmin", true);
+        this.$router.push("/kelola-konten");
+        this.loading = false;
+        this.submit = false;
+        this.modalLogin = false;
+      }, 3000);
     },
   },
 };

@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     activeMenu: null,
     titlePage: "MI. AHMAD YANI",
     titleOri: "MI. AHMAD YANI",
+    isAdmin: false,
     dataArtikel: [
       {
         image:
@@ -336,6 +337,9 @@ const store = new Vuex.Store({
       const get = state.dataArtikel.filter((e) => e.slug == payload)[0];
       get.views++;
     },
+    commitIsAdmin(state, payload) {
+      state.isAdmin = payload;
+    },
   },
   actions: {
     setTitlePage({ commit }, payload) {
@@ -347,6 +351,9 @@ const store = new Vuex.Store({
     addViews({ commit }, payload) {
       commit("commitAddViews", payload);
     },
+    setIsAdmin({ commit }, payload) {
+      commit("commitIsAdmin", payload);
+    },
   },
   getters: {
     titlePage: (state) => state.titlePage,
@@ -354,6 +361,7 @@ const store = new Vuex.Store({
     dataBerita: (state) => state.dataBerita,
     albums: (state) => state.albums,
     activeMenu: (state) => state.activeMenu,
+    isAdmin: (state) => state.isAdmin,
   },
   plugins: [vp.plugin],
 });
