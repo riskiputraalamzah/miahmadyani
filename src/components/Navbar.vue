@@ -100,13 +100,7 @@
               v-show="$vuetify.breakpoint.width > 599"
             >
               <div class="mb-4 mb-md-0 ">
-                <v-btn
-                  color="success"
-                  @click="showModalLogin"
-                  class="mx-2"
-                  large
-                  >login</v-btn
-                >
+                <v-btn color="success" class="mx-2" large>login</v-btn>
                 <v-btn color="success" class="mx-2" outlined large
                   >daftar</v-btn
                 >
@@ -199,9 +193,7 @@
           ></v-text-field>
         </v-form>
         <div class="mb-8 d-flex justify-center">
-          <v-btn color="success" @click="showModalLogin" class="mx-2" large
-            >login</v-btn
-          >
+          <v-btn color="success" class="mx-2" large>login</v-btn>
           <v-btn color="success" class="mx-2" outlined large>daftar</v-btn>
         </div>
         <v-list class="pa-0 mt-sm-5 mt-3 list-menu" width="100%">

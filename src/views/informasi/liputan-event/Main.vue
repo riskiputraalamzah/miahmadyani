@@ -3,10 +3,10 @@
     <v-container>
       <section class="py-10">
         <div
-          class="text-md-h3 mb-10 text-sm-h4 text-h5 font-weight-bold text-center"
+          class="mb-10 text-md-h3 text-sm-h4 text-h5 font-weight-bold text-center "
         >
           <span class="font-poppins rule-headline">
-            Artikel
+            Liputan Event
           </span>
         </div>
 
@@ -19,30 +19,27 @@
                 elevation="0"
                 light
               >
-                <v-img
-                  aspect-ratio="1.5"
-                  class="align-end"
-                  gradient="to top, rgba(0,0,0,0.2),transparent"
-                  :lazy-src="info.image"
-                  :src="info.image"
-                >
-                  <v-chip
-                    v-for="(ctg, i) in info.category"
-                    :key="i"
-                    class="ma-2 text-uppercase"
-                    v-text="ctg"
-                    small
+                <v-row class="overflow-hidden rounded-lg" no-gutters>
+                  <v-col
+                    v-for="(img, indexImg) in info.images"
+                    :key="indexImg"
+                    cols="6"
                   >
-                  </v-chip>
-                </v-img>
+                    <v-img :src="img" aspect-ratio="1">
+                      <template v-slot:placeholder>
+                        <v-skeleton-loader type="image"></v-skeleton-loader>
+                      </template>
+                    </v-img>
+                  </v-col>
+                </v-row>
 
                 <router-link
-                  :to="{ name: 'showArtikel', params: { slug: info.slug } }"
+                  :to="{ name: 'showEvent', params: { slug: info.slug } }"
                   class="black--text text-decoration-none"
                 >
                   <v-card-title
                     v-text="info.title"
-                    class="hover-underline cursor-pointer"
+                    class="hover-underline cursor-pointer "
                     style="line-height:1.5rem;padding:1rem 0.5rem;"
                   ></v-card-title>
                 </router-link>
@@ -55,10 +52,10 @@
                     <v-icon class="mr-1">mdi-calendar-clock</v-icon>
                     <span>{{ info.time }}</span>
                   </div>
-                  <div class="d-flex my-1  align-center">
+                  <!-- <div class="d-flex my-1  align-center">
                     <v-icon class="mr-1">mdi-eye</v-icon>
                     <span>{{ info.views }}</span>
-                  </div>
+                  </div> -->
                   <div class="d-flex my-1  align-center">
                     <v-icon class="mr-1">mdi-account</v-icon>
                     <span>{{ info.author }}</span>
@@ -77,15 +74,21 @@
 export default {
   data() {
     return {
-      titlePage: "Artikel",
-
-      data: [],
+      titlePage: "Liputan Event",
     };
+  },
+  computed: {
+    data() {
+      let result = this.$store.getters.dataLiputanEvent;
+      const onlyFourImage = result.map((obj) => {
+        return { ...obj, images: obj.images.slice(0, 4) };
+      });
+      return this.createSlug(onlyFourImage);
+    },
   },
   created() {
     this.$store.dispatch("setTitlePage", this.titlePage);
-
-    this.data = this.createSlug(this.$store.getters.dataArtikel);
+    this.isMounted(2);
   },
 
   methods: {

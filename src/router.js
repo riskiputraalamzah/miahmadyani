@@ -42,7 +42,7 @@ export default new Router({
     {
       path: "/artikel",
       meta: { breadCrumb: "Artikel" },
-      component: () => import("./views/artikel/Parent.vue"),
+      component: () => import("./views/HaveChildren.vue"),
 
       children: [
         {
@@ -79,12 +79,31 @@ export default new Router({
       meta: { breadCrumb: "Alumni" },
       component: () => import("./views/informasi/Alumni.vue"),
     },
+
     {
       path: "/liputan-event",
-      name: "liputanEvent",
+
       meta: { breadCrumb: "Liputan Event" },
-      component: () => import("./views/informasi/LiputanEvent.vue"),
+      component: () => import("./views/HaveChildren.vue"),
+
+      children: [
+        {
+          path: "",
+          name: "liputanEvent",
+          component: () => import("./views/informasi/liputan-event/Main.vue"),
+        },
+        {
+          path: ":slug",
+          name: "showEvent",
+          props: true,
+          meta: {
+            breadCrumb: this,
+          },
+          component: () => import("./views/informasi/liputan-event/Show.vue"),
+        },
+      ],
     },
+
     {
       path: "/kelola-konten",
       name: "kelolaKonten",

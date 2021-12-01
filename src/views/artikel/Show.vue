@@ -104,7 +104,6 @@
 export default {
   data() {
     return {
-      dataArtikel: "",
       categories: [
         {
           name: "PENDIDIKAN",
