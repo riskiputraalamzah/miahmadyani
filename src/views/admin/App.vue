@@ -13,9 +13,8 @@
         <v-list-item link>
           <v-list-item-content>
             <v-list-item-title class="text-h6">
-              John Leider
+              Admin
             </v-list-item-title>
-            <v-list-item-subtitle>john@vuetifyjs.com</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>

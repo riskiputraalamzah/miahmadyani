@@ -5,6 +5,9 @@ import Home from "./views/Home.vue";
 Vue.use(Router);
 export default new Router({
   mode: "history",
+  scrollBehavior() {
+    window.scrollTo(0, 0);
+  },
   routes: [
     {
       path: "/",
