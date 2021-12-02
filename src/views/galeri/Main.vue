@@ -44,7 +44,7 @@
           style="max-width:100vw;max-height:100vh"
           contain
           :lazy-src="srcLightbox"
-          @click="lightbox"
+          @click="dialog = !dialog"
           :src="srcLightbox"
         >
         </v-img>

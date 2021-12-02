@@ -2,7 +2,7 @@
   <div class="home-content">
     <hero-content>
       <template>
-        <v-carousel interval="10000" cycle height="50vmax" hide-delimiters>
+        <v-carousel interval="10000" cycle height="45vmax" hide-delimiters>
           <v-carousel-item
             active-class="active"
             v-for="(slide, i) in sliders"

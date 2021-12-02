@@ -153,12 +153,14 @@ const store = new Vuex.Store({
         MI. Ahmad Yani Pagerngumbuk selalu men-upgrade kegiatan baik kegiatan mingguan, bulanan dan tahunan. Bulan November kali ini, ada 2 kegiatan yang bekerjasama dengan Puskesmas Wonoayu yang dikepalai dr. B. Irawatyratna K., MM. Dua kegiatan tersebut yakni BIAS jenis MR untuk kelas 1 pada hari rabu, tanggal 10 November 2021 dan SCREENING kesehatan untuk kelas 1.
         </p>
         <p>
-        BIAS (Bulan Imunisasi Anak Sekolah) ini diadakan setiap tahun bagi murid baru dengan merek Bias MR.
+        BIAS (Bulan Imunisasi Anak Sekolah), BIAS MR Ini di berikan di laksanakan setiap Agustus hingga september. Imunisasi MR ( Measles an Rubela). Vaksin ini di berikan kepada anak kelas 1 . Untuk mencegah terjadinya penyakit yang di sebabkan oleh virus measles( campak) dan rubella. Dan imunisasi DT bagi anak kelas 1 yg akan dilaksanakan tanggal 3 Desember ini sebagai kelanjutan dari imunisasi MR.  
         </p>
         <p>
         Screening disini untuk mengetahui kesehatan anak mulai dari mengecek gigi, hidung, mata, dan telinga. Alhamdulillah acara sudah berjalan dengan lancar, setelah adanya screening siswa ada siswa yang diberi rujukan untuk Tindak Lanjut ke puskesmas sesuai keluhan siswa. Dalam kegiatan ini pelayanan kesehatan di puskesmas dilayani dengan bagus karena telah terjadwalkan ke puskesmas.
         </p>
-        <p>Kepala UKS MI. Ahmad Yani menjelaskan kelebihan adanya screening untuk mengetahui kesehatan anak dari dini. Seperti sikap anak-anak dirumah yang tidak terdeteksi menjadi teratasi, contoh konkritnya dipanggil anak tidak segera menjawab dan memenuhi maka hal itu ada yang bermasalah di telinga. Kelebihan berat badan anak menjadi terdeteksi, karena dirumah makanannya tidak terjaga, dll.</p>
+        <p>
+        Kepala UKS MI. Ahmad Yani menjelaskan kelebihan adanya screening untuk mengetahui kesehatan anak dari dini. Seperti sikap anak-anak dirumah yang tidak terdeteksi menjadi teratasi, contoh konkritnya dipanggil anak tidak segera menjawab dan memenuhi maka hal itu ada yang bermasalah di telinga. Kelebihan berat badan anak menjadi terdeteksi, karena dirumah makanannya tidak terjaga, dll.
+        </p>
         `,
       },
     ],

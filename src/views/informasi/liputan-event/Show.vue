@@ -36,11 +36,15 @@
             <v-row justify="center">
               <v-col
                 cols="6"
-                aspect-ratio="1"
                 v-for="(lImg, indexLImg) in liputanEvent.images"
                 :key="indexLImg"
               >
-                <v-img :src="lImg" class="rounded-lg">
+                <v-img
+                  @click.stop="lightbox(lImg)"
+                  aspect-ratio="1"
+                  :src="lImg"
+                  class="rounded-lg"
+                >
                   <template v-slot:placeholder>
                     <v-skeleton-loader type="image"></v-skeleton-loader>
                   </template>
@@ -106,11 +110,39 @@
         </v-row>
       </section>
     </v-container>
+
+    <v-dialog
+      class="d-flex py-10 align-center"
+      style="z-index:9999999999"
+      fullscreen
+      v-model="dialog"
+    >
+      <v-overlay opacity="0.9">
+        <v-img
+          style="max-width:100vw;max-height:100vh"
+          contain
+          :lazy-src="srcLightbox"
+          @click="dialog = !dialog"
+          :src="srcLightbox"
+        >
+        </v-img>
+        <div class="placeholder-lightbox text-sm-h5 text-h6 pa-4">
+          {{ textLightBox }}
+        </div>
+      </v-overlay>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      dialog: false,
+      srcLightbox: null,
+      textLightBox: null,
+    };
+  },
   props: ["slug"],
   computed: {
     liputanEvent() {
@@ -137,6 +169,11 @@ export default {
 
     slugInUrl(value) {
       return this.$route.path.split("/").includes(value);
+    },
+    lightbox(src = null, text = null) {
+      this.dialog = !this.dialog;
+      this.srcLightbox = src;
+      this.textLightBox = text;
     },
   },
 };
