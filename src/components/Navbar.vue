@@ -253,26 +253,27 @@ export default {
       sosmeds: [
         {
           icon: "mdi-facebook",
-          name: "Miahmadayani",
+          name: "MI AHMAD YANI PAGERNGUMBUK",
           color: "primary",
           href: "https://www.facebook.com/profile.php?id=100008332621737",
         },
         {
           icon: "mdi-whatsapp",
-          name: "Whatsapp",
+          name: "WHATSAPP",
           color: "primary",
           href: "https://api.whatsapp.com/send?phone=6285648092229",
         },
         {
-          icon: "mdi-instagram",
+          icon: "mdi-youtube",
           color: "red",
-          name: "miahmadayani",
+          name: "SAHABAT AHYA",
+          href: "https://www.youtube.com/channel/UCxHx85n46PvofDVHXkM8OTw",
         },
-        {
-          icon: "mdi-email",
-          color: "warning",
-          name: "Miahmadyani_pagerngumbuk@yahoo.com",
-        },
+        // {
+        //   icon: "mdi-email",
+        //   color: "warning",
+        //   name: "Miahmadyani_pagerngumbuk@yahoo.com",
+        // },
       ],
 
       menus: [
