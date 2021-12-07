@@ -85,7 +85,7 @@ export default {
   created() {
     this.$store.dispatch("setTitlePage", this.titlePage);
 
-    this.data = this.createSlug(this.$store.getters.dataArtikel);
+    this.data = this.$store.getters.dataArtikel;
   },
 
   methods: {

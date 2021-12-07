@@ -137,6 +137,32 @@ const store = new Vuex.Store({
     ],
     dataLiputanEvent: [
       {
+        title: "SEDEKAH HARI JUM'AT",
+        time: "7/12/2021 09:16",
+        author: "admin",
+        slug: "sedekah-hari-jumat",
+        images: [
+          "/images/liputan-event/6.jpeg",
+          "/images/liputan-event/7.jpeg",
+        ],
+        text: `
+        <p>
+        Pada hari Jum’at tanggal 19 November 2021 telah diadakan Pesta Siaga bersama Kakwaran Wonoayu dengan berbagi Nasi di area jalan raya pagerngumbuk tepatnya didepan gedung MI. Ahmad Yani. 
+        </p>
+        <p>
+        Program tersebut dilaksanakan siswa-siswi MI. Ahmad Yani beserta kakak pembina pramuka kwartir ranting Wonoayu guna menumbuhkan rajin dan gemar ber-shadaqah, sekaligus mampu bersosialisasi dan menebar kebaikan dimanapun mereka berada.  
+        </p>
+        <p>
+        Kegiatan ini membuat antusias anak-anak mencoba hal baru dan menemukan orang baru yang nantinya akan terbiasa dan lebih peka di masyarakat.
+        </p>
+        <p>
+        Islamic Superior School <b>“MI. Ahmad Yani Pagerngumbuk”</b>
+        </p>
+        <p>Everyone is Teacher</p>
+        <p>Everyone is School</p>
+        `,
+      },
+      {
         title: "SCREENING DAN BIAS MR",
         time: "1/12/2021 21:54",
         author: "admin",

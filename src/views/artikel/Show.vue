@@ -2,8 +2,8 @@
   <div>
     <v-container>
       <section class="py-10">
-        <v-row justify="center">
-          <v-col cols="12" sm="10" md="8" xl="7">
+        <v-row justify="space-around">
+          <v-col cols="12" sm="10" md="8" lg="8" xl="7">
             <div
               class="font-poppins mb-4 text-md-h4 text-h5 "
               v-text="artikel.title"
@@ -32,7 +32,7 @@
 
             <div class="text-subtitle mb-4" v-html="artikel.text"></div>
           </v-col>
-          <v-col cols="12" sm="10" md="4" xl="5">
+          <v-col cols="12" sm="10" md="8" lg="3" xl="3">
             <div class="konten_artikel_terkait">
               <div class="item mb-5">
                 <div class="mb-3   text-h6  ">

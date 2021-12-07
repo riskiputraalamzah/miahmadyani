@@ -3,7 +3,7 @@
     <v-container>
       <section class="py-10">
         <v-row justify="space-around">
-          <v-col cols="12" sm="10" md="3" xl="2">
+          <v-col cols="12" sm="10" md="8" lg="3" xl="2">
             <div class="konten_artikel_terkait">
               <div class="item mb-5">
                 <div class="mb-3   text-h6  ">
@@ -23,7 +23,7 @@
               </div>
             </div>
           </v-col>
-          <v-col cols="12" sm="10" md="5" xl="2">
+          <v-col cols="12" sm="10" md="8" lg="5" xl="5">
             <div
               class="font-poppins mb-4 text-md-h3 text-h4 "
               v-text="liputanEvent.title"
@@ -55,7 +55,8 @@
           <v-col
             cols="12"
             sm="10"
-            md="3"
+            md="8"
+            lg="3"
             xl="2"
             v-if="liputanEventTerkait.length > 0"
           >

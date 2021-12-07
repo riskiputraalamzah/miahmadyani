@@ -81,9 +81,10 @@ export default {
     data() {
       let result = this.$store.getters.dataLiputanEvent;
       const onlyFourImage = result.map((obj) => {
-        return { ...obj, images: obj.images.slice(0, 4) };
+        return { ...obj, images: obj.images.slice(0, 2) };
       });
-      return this.createSlug(onlyFourImage);
+      return onlyFourImage;
+      // return this.createSlug(onlyFourImage);
     },
   },
   created() {
@@ -92,17 +93,16 @@ export default {
   },
 
   methods: {
-    createSlug(list) {
-      return list.map((item) => {
-        const obj = Object.assign({}, item);
-
-        obj["slug"] = item.title
-          .toLowerCase()
-          .split(" ")
-          .join("-");
-        return obj;
-      });
-    },
+    // createSlug(list) {
+    //   return list.map((item) => {
+    //     const obj = Object.assign({}, item);
+    //     obj["slug"] = item.title
+    //       .toLowerCase()
+    //       .split(" ")
+    //       .join("-");
+    //     return obj;
+    //   });
+    // },
   },
 };
 </script>
